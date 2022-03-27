@@ -1,65 +1,44 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const MongoClient = require('mongodb').MongoClient
-const app = express()
+const express = require('express');
+const app = express();
+const http = require('http').Server(app);
+let bodyParser = require('body-parser');
 
-// ========================
-// Link to Database
-// ========================
-// Updates environment variables
-// @see https://zellwk.com/blog/environment-variables/
+// [!] : middleware pour la structuration des requetes particuliers (ex : POST)
+app.use(bodyParser.json()); // Lit l'élément Json dans l'url(s'il y en a)
+app.use(bodyParser.urlencoded({ extended: true })); // Supporte les bodies encodés
+
+// [!] : middleware de Gestion du CORS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Access-Control-Allow-Credentials", true);
+  next();
+});
+
 require('./dotenv')
 
-// Replace process.env.DB_URL with your actual connection string
-const connectionString = process.env.DB_URL
+// [!] : definition des routes
+app.use('/plat', require("./controller/PlatController"));
 
-MongoClient.connect(connectionString, { useUnifiedTopology: true },
-)
-  .then(client => {
+// [!] : middleware qui capture tous les erreurs 404
+app.use((req, res, next) => {
+	if ( res.status(404) ) {
+		res.json({
+			code : 404,
+			error : true,
+			detailed : req.url,
+			data : "Error 404"
+		});
+	} else {
+		next();
+	}
+});
 
-    console.log('Connected to Database')
-    const db = client.db('test')
-    const devCollection = db.collection('devices')
-
-    // ========================
-    // Middlewares
-    // ========================
-    app.set('view engine', 'ejs')
-    app.use(bodyParser.urlencoded({ extended: true }))
-    app.use(bodyParser.json())
-    app.use(express.static('public'))
-
-
-    /*const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://root:<password>@cluster0.whxqr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-}); 
-    // ========================
-    // Routes
-    // ========================
-    /backoffice/plats
-      token
-    /front/plats*/
-    app.get('/backoffice', (req, res) => {
-      db.collection('devices').find().toArray()
-        .then(quotes => {
-          res.render('backoffice.ejs', { quotes: quotes })
-        })
-        .catch(error => {
-          res.sendFile('./index.html');
-        });
-    })
-    // ========================
-    // Listen
-    // ========================
-    const isProduction = process.env.NODE_ENV === 'production'
-    const port = isProduction ? 7500 : 3000
-    app.listen(port, function () {
-      console.log(`listening on ${port}`)
-    })
-  })
-  .catch(console.error)
+// [!] : demarrage du serveur
+const port = process.env.PORT || config.PORT;
+const addr = process.env.SERVER_ADDR || 'localhost';
+//console.log(`Listening on ${addr}:${port}`);
+http.listen(port, function(){
+	console.log(`Listening on ${ addr }:${ port }`);
+});
