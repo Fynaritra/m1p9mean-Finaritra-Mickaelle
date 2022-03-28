@@ -3,10 +3,10 @@ db.plat.insert(
     {
         id:'PLT0001',
         categorie:'Viande',
-        nom:'Steak'
-        description:''
-        prixvente:15000
-        revient:9000
+        nom:'Steak',
+        description:'',
+        prixvente:15000,
+        revient:9000,
         etat:0
     }
 );
