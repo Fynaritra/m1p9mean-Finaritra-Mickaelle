@@ -4,7 +4,7 @@ const router = express.Router();
 var PlatModel = require('../modele/PlatModel');
 var Connection = require('../db/Connection');
 
-router.get('/', (req, get) => {
+router.get('/', (req, res) => {
 	res.json({
 		status : 200,
 		data : "Rien par ici"

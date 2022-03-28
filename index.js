@@ -19,7 +19,10 @@ app.use(function(req, res, next) {
 require('./dotenv')
 
 // [!] : definition des routes
-app.use('/plat', require("./controller/PlatController"));
+//angular
+app.use("/", express.static("public/dist"));
+//bo
+app.use('/bo/plat', require("./controller/PlatController"));
 
 // [!] : middleware qui capture tous les erreurs 404
 app.use((req, res, next) => {
