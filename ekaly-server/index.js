@@ -20,24 +20,12 @@ require('./dotenv')
 // [!] : definition des routes
 //angular
 app.use("/", express.static("public/dist"));
-//bo
+//api
 app.use('/api/plat', require("./controller/PlatController"));
 
 // [!] : middleware qui capture tous les erreurs 404
-app.use((req, res, next) => {
-	if ( res.status(404) ) {
-		res.json({
-			code : 404,
-			error : true,
-			detailed : req.url,
-			data : "Error 404"
-		});
-	} else {
-		next();
-	}
-});
 const isProduction = process.env.NODE_ENV === 'production'
-    const port = isProduction ? 7500 : 3000
+    const port = isProduction ? 7500 : 3005
     app.listen(port, function () {
       console.log(`listening on ${port}`)
     })
