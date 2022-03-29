@@ -39,8 +39,8 @@ app.use((req, res, next) => {
 });
 
 // [!] : demarrage du serveur
-const port = process.env.PORT || config.PORT;
-const addr = process.env.SERVER_ADDR || 'localhost';
+const port = process.env.PORT;
+const addr = process.env.SERVER_ADDR;
 //console.log(`Listening on ${addr}:${port}`);
 http.listen(port, function(){
 	console.log(`Listening on ${ addr }:${ port }`);
