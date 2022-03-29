@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const http = require('http').Server(app);
 let bodyParser = require('body-parser');
 
 // [!] : middleware pour la structuration des requetes particuliers (ex : POST)
@@ -36,12 +35,4 @@ app.use((req, res, next) => {
 	} else {
 		next();
 	}
-});
-
-// [!] : demarrage du serveur
-const port = process.env.PORT;
-const addr = process.env.SERVER_ADDR;
-//console.log(`Listening on ${addr}:${port}`);
-http.listen(port, function(){
-	console.log(`Listening on ${ addr }:${ port }`);
 });
