@@ -6,15 +6,6 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.json()); // Lit l'élément Json dans l'url(s'il y en a)
 app.use(bodyParser.urlencoded({ extended: true })); // Supporte les bodies encodés
 
-// [!] : middleware de Gestion du CORS
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-});
-
 require('./dotenv')
 
 // [!] : definition des routes
