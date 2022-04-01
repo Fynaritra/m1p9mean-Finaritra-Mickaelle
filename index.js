@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const conf = require('project.config');
+const conf = require('./project.config');
 
 //angular
 app.use(express.static('./dist/ekaly-app'));
