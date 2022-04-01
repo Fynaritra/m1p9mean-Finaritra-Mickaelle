@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const http = require('http').Server(app);
+const conf = require('./tools/project.config');
 let bodyParser = require('body-parser');
 
 // [!] : middleware pour la structuration des requetes particuliers (ex : POST)
@@ -19,10 +19,12 @@ app.use(function(req, res, next) {
 require('./dotenv')
 
 // [!] : definition des routes
-//angular
-app.use("/", express.static("public/dist"));
 //bo
 app.use('/bo/plat', require("./controller/PlatController"));
+//app.use('/bo/resto', require("./controller/RestoController"));
+//app.use('/bo/livreur', require("./controller/LivreurController"));
+//app.use('/bo/login', require("./controller/LoginController"));
+//app.use('/bo/cmd', require("./controller/CmdController"));
 
 // [!] : middleware qui capture tous les erreurs 404
 app.use((req, res, next) => {
@@ -39,9 +41,9 @@ app.use((req, res, next) => {
 });
 
 // [!] : demarrage du serveur
-const port = process.env.PORT || config.PORT;
+const port = process.env.PORT || conf.PORT;
 const addr = process.env.SERVER_ADDR || 'localhost';
 //console.log(`Listening on ${addr}:${port}`);
-http.listen(port, function(){
+app.listen(port, function(){
 	console.log(`Listening on ${ addr }:${ port }`);
 });
