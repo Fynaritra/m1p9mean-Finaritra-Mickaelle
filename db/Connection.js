@@ -1,5 +1,6 @@
 const { MongoClient } = require("mongodb");
-const connectionString = process.env.DB_URL;
+const conf = require('./tools/project.config');
+const connectionString = conf.DB_URL;
 
 function Connection(){
     this.connexion;
