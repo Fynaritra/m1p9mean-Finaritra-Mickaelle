@@ -5,8 +5,8 @@ const maxMemory = process.env.WEB_MEMORY || 512
 // NOTE TO SELF. Logs are located in .pm2/logs
 pm2.connect(function () {
   pm2.start({
-    script: 'server.js',
-    name: 'crud-demo',
+    script: 'index.js',
+    name: 'ekaly-server',
     exec_mode: 'cluster',
     watch: false,
     instances: instances,
