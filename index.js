@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const conf = require('project.config');
 
 //angular
 app.use(express.static('./dist/ekaly-app'));
@@ -11,8 +12,5 @@ app.get('/*', (req, res) =>
 const port = process.env.PORT || conf.PORT;
 const addr = process.env.SERVER_ADDR || 'localhost';
 //console.log(`Listening on ${addr}:${port}`);
-app.listen(port, function(){
-	console.log(`Listening on ${ addr }:${ port }`);
-});
 
-app.listen(process.env.PORT || 8080);
+app.listen(port);
