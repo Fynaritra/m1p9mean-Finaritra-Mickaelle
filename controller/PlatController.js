@@ -4,6 +4,28 @@ const router = express.Router();
 var PlatModel = require('../modele/PlatModel');
 var Connection = require('../db/Connection');
 
+
+router.get('/search/:name/:minprice/:maxprice', (req, res) =>{
+    let connection = new Connection();
+	let promise = connection.getDB("ekaly");
+    promise.then(function(db){
+        const promise = PlatModel.chercherPrixPlat(db, req.params.name, req.params.minprice, req.params.maxprice, 5, 1);
+        promise.then(function(value){
+            res.json(value);
+        }).catch( error => {
+            console.error(error);
+            res.json({
+                status : 400, // reponse http
+                error : true, // pour signaler que ceci est une erreur
+                detailed : `${error} : concernant la requête infos `, // erreur pour les devs
+                data : "Une erreur est survenue lors de la requête" // pour les users
+            });
+        }).finally(()=>{
+            connection.endConnection();
+        });
+    });
+});
+
 router.get('/all', (req, res) =>{
     let connection = new Connection();
 	let promise = connection.getDB("ekaly");

@@ -20,5 +20,30 @@ module.exports = class PlatModel{
             });
         });
     }
+
+    static chercherPrixPlat(db, name, minprice, maxprice, limit, numpage){
+        let skips = limit * (numpage - 1);
+        return new Promise((resolve, reject)=> {
+            db.collection("plat").find(
+                {
+                    name : '/'.concat(name,'/'),
+                    etat : 1
+                }
+            )
+            .skip(skips).limit(limit).toArray(function (err, result) {
+                if (err) {
+                    console.error(err);
+                    reject(error);
+					return;
+                } else {
+                    resolve({
+                        "status": 200,
+                        "data": result
+                    });
+                }
+            });
+        });
+    }
+
     
 }
