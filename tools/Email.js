@@ -16,7 +16,7 @@ module.exports = class Email {
   }
 
   //generer code de confirmation (inscription)
-  static genererCode(email, pseudo) {
+  static generateCode(email, pseudo) {
     // const token = TokenManager.generateUsing(email + pseudo, duration);
     // const partie2 = token.split('.')[1];
     // return partie2.substr(20, 10); // sur fa fixe sy miovaova

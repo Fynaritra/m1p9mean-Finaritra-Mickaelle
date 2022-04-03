@@ -21,8 +21,8 @@ require('./dotenv')
 
 // [!] : definition des routes
 //bo
-app.use('/bo/plat', require("./controller/PlatController"));
-//app.use('/bo/resto', require("./controller/RestoController"));
+app.use('/api/plat', require("./controller/PlatController"));
+app.use('/api', require("./controller/AuthController"));
 //app.use('/bo/livreur', require("./controller/LivreurController"));
 //app.use('/bo/login', require("./controller/LoginController"));
 //app.use('/bo/cmd', require("./controller/CmdController"));
