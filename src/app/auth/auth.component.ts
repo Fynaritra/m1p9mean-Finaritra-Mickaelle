@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from '../config/config.service';
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  cmd = []
+  constructor(private confS: ConfigService) { 
+    
   }
 
+  ngOnInit(): void {
+    this.listePlats();
+  }
+
+  listePlats() {
+    this.confS.getPlat().subscribe((result) => {
+      console.log(result.data);
+  });
+  }
 }
