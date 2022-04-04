@@ -17,9 +17,6 @@ module.exports = class Email {
 
   //generer code de confirmation (inscription)
   static generateCode(email, pseudo) {
-    // const token = TokenManager.generateUsing(email + pseudo, duration);
-    // const partie2 = token.split('.')[1];
-    // return partie2.substr(20, 10); // sur fa fixe sy miovaova
     let date = new Date();
     date = date.getDate()+""+date.getFullYear()+""+date.getMonth();
     let result1 = Email.codeString(pseudo);
@@ -30,9 +27,6 @@ module.exports = class Email {
 
   //verifier code de confirmation (inscription)
   static verifierCode(email, pseudo, code) {
-    // const token = TokenManager.generateUsing(email + pseudo, duration);
-    // const partie2 = token.split('.')[1];
-    // return partie2.substr(20, 10) == code; // sur fa fixe sy miovaova
     let date = new Date();
     date = date.getDate()+""+date.getFullYear()+""+date.getMonth();
     let result1 = Email.codeString(pseudo);
@@ -43,11 +37,6 @@ module.exports = class Email {
   
   //generer code de confirmation (oublier mot de passe)
   static genererCodeMDP(email) {
-    // let date = new Date();
-    // date = date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
-    // const token = TokenManager.generateUsing(date + email, duration);
-    // const partie2 = token.split('.')[1];
-    // return partie2.substr(20, 10); // sur fa fixe sy miovaova
     let date = new Date();
     let result1 = Email.codeString(date.getDate()+"");
     let result2 = Email.codeString(date.getMonth()+"");
@@ -57,11 +46,6 @@ module.exports = class Email {
 
   //verifier code de confirmation (oublier mot de passe)
   static verifierCodeMDP(email, code) {
-    // let date = new Date();
-    // date = date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear();
-    // const token = TokenManager.generateUsing(date + email, duration);
-    // const partie2 = token.split('.')[1];
-    // return partie2.substr(20, 10) == code; // sur fa fixe sy miovaova
     let date = new Date();
     let result1 = Email.codeString(date.getDate()+"");
     let result2 = Email.codeString(date.getMonth()+"");
