@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const constante = require('../tools/const.config');
 
 var PlatModel = require('../modele/PlatModel');
 var Connection = require('../db/Connection');
@@ -8,7 +9,24 @@ var Connection = require('../db/Connection');
 
 //Saisie plat
 router.post('/insert', (req, res)=>{
-    
+    let connection = new Connection();
+	let dbpromise = connection.getDB("ekaly");
+    dbpromise.then(function(db){
+        const promise = PlatModel.insert(db, req.body.idResto, req.body.categorie, req.body.nom, req.body.description, req.body.prixvente, req.body.revient, constante.etatcree);
+        promise.then(function(value){
+            res.json(value);
+        }).catch( error => {
+            console.error(error);
+            res.json({
+                status : 400, // reponse http
+                error : true, // pour signaler que ceci est une erreur
+                detailed : `${error} : concernant la requête infos `, // erreur pour les devs
+                data : "Une erreur est survenue lors de la requête" // pour les users
+            });
+        }).finally(()=>{
+            connection.endConnection();
+        });
+    });
 })
 //Fiche plat
 router.get('/fiche', (req, res) =>{

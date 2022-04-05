@@ -1,20 +1,46 @@
 /* node JS */
-
+const ObjectId = require('mongodb').ObjectId;
 const constante = require('../tools/const.config');
 module.exports = class PlatModel{
 
+    static updateEtat(db, id, etat){
+        
+    }
+
+    static insert(db, idResto, categorie, nom, description, prixvente, revient, etatcree){
+        return new Promise((resolve, reject)=>{
+            db.collection("plat").insertOne(
+                {
+                    nom : nom,
+                    idResto : idResto,
+                    categorie : categorie,
+                    etat : Number.parseInt(etatcree),
+                    description : description,
+                    prixvente : Number.parseInt(prixvente),
+                    revient: Number.parseInt(revient)
+                }
+            ).then(function(data) {
+                if(data.insertedCount==1){
+                    resolve({
+                        "status": 200,
+                        "data": data.ops
+                    });
+                }else{
+                    reject(data);
+                }
+            });
+        });
+    }
     static fichePlat(db, id){
         return new Promise((resolve, reject)=> {
             db.collection("plat").find({
-                id: id
+                _id: new ObjectId(id)
             }).toArray(function (err, result) {
                 if (err) {
                     console.error(err);
                     reject(error);
 					return;
-                    //res.status(400).send("Error fetching listings!");
                 } else {
-                    //res.json(result);
                     resolve({
                         "status": 200,
                         "data": result
@@ -31,7 +57,7 @@ module.exports = class PlatModel{
             db.collection("plat").aggregate(
                 [{
                     $match:{
-                        idResto: new RegExp(idresto),
+                        idResto: new ObjectId(idresto),
                         nom: new RegExp(name)
                     }
                 },
