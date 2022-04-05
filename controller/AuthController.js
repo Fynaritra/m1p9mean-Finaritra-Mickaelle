@@ -5,13 +5,6 @@ var AuthModel = require('../modele/AuthModel');
 var TokenManager = require('../tools/TokenManager');
 var Connection = require('../db/Connection');
 
-router.get('/', (req, get) => {
-	res.json({
-		status : 200,
-		data : "Rien par ici"
-	});
-});
-
 router.post('/login', (req, res) =>{
     let connection = new Connection();
 	let promise = connection.getDB("ekaly");
