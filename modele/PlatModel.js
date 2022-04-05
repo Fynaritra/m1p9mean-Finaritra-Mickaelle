@@ -154,9 +154,8 @@ module.exports = class PlatModel{
 
     static chercherPrixPlat(db, name, minprice, maxprice, limit, numpage){
         let skips = limit * (numpage - 1);
-        if(limit==0){
-            limit = 20;
-        }
+        if(limit==0)limit = constante.limitskip;
+        if(numpage==0)numpage = constante.numskip;
         return new Promise((resolve, reject)=> {
             if(isNaN(minprice))minprice=0;
             if(isNaN(maxprice))maxprice=9999999999;
