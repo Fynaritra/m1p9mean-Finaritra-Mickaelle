@@ -24,7 +24,6 @@ require('./dotenv')
 app.use('/api/plat', require("./controller/PlatController"));
 app.use('/api', require("./controller/AuthController"));
 app.use('/api/resto', require("./controller/RestoController"));
-//app.use('/bo/login', require("./controller/LoginController"));
 //app.use('/bo/cmd', require("./controller/CmdController"));
 
 // [!] : middleware qui capture tous les erreurs 404

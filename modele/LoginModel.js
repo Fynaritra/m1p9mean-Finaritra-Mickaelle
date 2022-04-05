@@ -1,5 +1,6 @@
 /* node JS */
 var EmailModel = require('../tools/Email');
+const ObjectId = require('mongodb').ObjectId;
 
 module.exports = class LoginModel{
 
@@ -41,28 +42,26 @@ module.exports = class LoginModel{
     }
 
     //inscription
-    static inscription(db, name, email, password, type_user_id, type_user_name, contact, code){
+    static inscription(db, name, email, password, idprofil, idresto, contact, code){
         return new Promise((resolve, reject)=> {
             if(EmailModel.verifierCode(email, name, code)){
                 db.collection("user").insertOne(
                     {
                         name : name,
                         email : email,
-                        password : password,
-                        type_user_id : ObjectId(type_user_id),
-                        type_user_name : type_user_name,
+                        pwd : password,
+                        idprofil : idprofil,
+                        idresto : idresto,
                         contact : contact
                     }
-                ).toArray(function (err, result) {
-                    if (err) {
-                        console.error(err);
-                        reject(error);
-                        return;
-                    } else {
+                ).then(function(data) {
+                    if(data.insertedCount==1){
                         resolve({
                             "status": 200,
-                            "data": result
+                            "data": data.ops
                         });
+                    }else{
+                        reject(data);
                     }
                 });
             }else{
