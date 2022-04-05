@@ -3,8 +3,29 @@ const ObjectId = require('mongodb').ObjectId;
 const constante = require('../tools/const.config');
 module.exports = class PlatModel{
 
-    static updateEtat(db, id, etat){
-        
+    static updateEtat(db, id, idResto, etat){
+        return new Promise((resolve, reject)=> {
+            db.collection("plat").findOneAndUpdate(
+                { _id: new ObjectId(id), idResto: idResto },
+                {
+                    $set: {
+                        etat: etat
+                    }
+                },
+                {
+                    upsert: true
+                }
+            ).then(function(data) {
+                if(data.ok==1){
+                    resolve({
+                        "status": 200,
+                        "data": data.ops
+                    });
+                }else{
+                    reject(data);
+                }
+            });
+        });
     }
 
     static insert(db, idResto, categorie, nom, description, prixvente, revient, etatcree){
@@ -110,7 +131,6 @@ module.exports = class PlatModel{
         if(limit==0){
             limit = 20;
         }
-        console.log(name);
         return new Promise((resolve, reject)=> {
             if(isNaN(minprice))minprice=0;
             if(isNaN(maxprice))maxprice=9999999999;
@@ -123,7 +143,7 @@ module.exports = class PlatModel{
                          $lte: maxprice
                     //     //$eq: val
                      },
-                    etat : 1
+                    etat :{ $gte:constante.etatvisible}
                 }
             )
             .skip(skips).limit(limit).toArray(function (err, result) {
