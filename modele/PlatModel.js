@@ -3,6 +3,32 @@ const ObjectId = require('mongodb').ObjectId;
 const constante = require('../tools/const.config');
 module.exports = class PlatModel{
 
+    static updatePrix(db, id, idResto, prixv, prixr){
+        return new Promise((resolve, reject)=> {
+            db.collection("plat").findOneAndUpdate(
+                { _id: new ObjectId(id), idResto: idResto },
+                {
+                    $set: {
+                        revient: prixr,
+                        prixvente: prixv
+                    }
+                },
+                {
+                    upsert: true
+                }
+            ).then(function(data) {
+                if(data.ok==1){
+                    resolve({
+                        "status": 200,
+                        "data": data.ops
+                    });
+                }else{
+                    reject(data);
+                }
+            });
+        });
+    }
+
     static updateEtat(db, id, idResto, etat){
         return new Promise((resolve, reject)=> {
             db.collection("plat").findOneAndUpdate(
