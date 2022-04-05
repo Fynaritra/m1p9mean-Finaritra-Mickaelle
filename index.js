@@ -23,7 +23,7 @@ require('./dotenv')
 //bo
 app.use('/api/plat', require("./controller/PlatController"));
 app.use('/api', require("./controller/AuthController"));
-//app.use('/bo/livreur', require("./controller/LivreurController"));
+app.use('/api/resto', require("./controller/RestoController"));
 //app.use('/bo/login', require("./controller/LoginController"));
 //app.use('/bo/cmd', require("./controller/CmdController"));
 
