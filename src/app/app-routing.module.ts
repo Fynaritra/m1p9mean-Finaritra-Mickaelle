@@ -14,7 +14,7 @@ import { CaComponent } from './analyseBO/ca/ca.component';
 import { BenefComponent } from './analyseBO/benef/benef.component';
 
 const routes: Routes = [
-  { path: 'authbo', component: AuthBOComponent },
+  { path: '', component: AuthBOComponent },
   { path: 'authfo', component: AuthComponent },
   { path: 'inscription', component: RegistrationComponent },
   { path: 'platfo', component: PlatsComponent, children:[

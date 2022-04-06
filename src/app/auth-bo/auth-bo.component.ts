@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthBOComponent implements OnInit {
 
-  constructor() { }
+  email:string;
+  mdp: string;
+
+  constructor() { 
+    this.email = "";
+    this.mdp = "";
+  }
 
   ngOnInit(): void {
+  }
+
+  connectbo(){
+
   }
 
 }

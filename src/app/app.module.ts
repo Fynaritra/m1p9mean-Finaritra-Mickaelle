@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -18,6 +20,14 @@ import { ListeComponent } from './plats/liste/liste.component';
 import { CaComponent } from './analyseBO/ca/ca.component';
 import { BenefComponent } from './analyseBO/benef/benef.component';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { LeftmenuComponent } from './include/leftmenu/leftmenu.component';
+import { HeaderboComponent } from './include/headerbo/headerbo.component';
+import { FooterComponent } from './include/footer/footer.component';
+import { LoaderComponent } from './include/loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,13 +42,22 @@ import { BenefComponent } from './analyseBO/benef/benef.component';
     UpdateComponent,
     ListeComponent,
     CaComponent,
-    BenefComponent
+    BenefComponent,
+    LeftmenuComponent,
+    HeaderboComponent,
+    FooterComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
