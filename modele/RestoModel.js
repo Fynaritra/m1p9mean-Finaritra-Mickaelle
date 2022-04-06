@@ -52,15 +52,14 @@ module.exports = class RestoModel{
 
     static select (db, limit, numpage){
         let skips = limit * (numpage - 1);
-        if(limit==0)limit = constante.limitskip;
-        if(numpage==0)numpage = constante.numskip;
+        if(isNaN(limit))limit = Number.parseInt(constante.limitskip);
+        if(isNaN(numpage))numpage = Number.parseInt(constante.numskip);
         return new Promise((resolve, reject)=> {
-            console.log(minprice);
             db.collection("resto").find({})
             .skip(skips).limit(limit).toArray(function (err, result) {
                 if (err) {
                     console.error(err);
-                    reject(error);
+                    reject(err);
 					return;
                 } else {
                     resolve({
@@ -75,11 +74,12 @@ module.exports = class RestoModel{
     static fiche(db, id){
         return new Promise((resolve, reject)=> {
             db.collection("resto").find({
+                //id: id
                 _id: new ObjectId(id)
             }).toArray(function (err, result) {
                 if (err) {
                     console.error(err);
-                    reject(error);
+                    reject(err);
 					return;
                 } else {
                     resolve({
