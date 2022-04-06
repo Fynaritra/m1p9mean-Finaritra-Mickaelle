@@ -27,20 +27,17 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/assets/css/style.min.css",
               "src/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css",
               "src/assets/plugins/bower_components/chartist/dist/chartist.min.css"
             ],
             "scripts": [
-              "src/assets/plugins/bower_components/jquery/dist/jquery.min.js",
               "src/assets/bootstrap/dist/js/bootstrap.bundle.min.js",
               "src/assets/js/app-style-switcher.js",
-              "src/assets/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js",
               "src/assets/js/waves.js",
               "src/assets/js/sidebarmenu.js",
               "src/assets/js/custom.js",
-              "src/assets/plugins/bower_components/chartist/dist/chartist.min.js",
-              "src/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js",
               "src/assets/js/pages/dashboards/dashboard1.js"
             ]
           },

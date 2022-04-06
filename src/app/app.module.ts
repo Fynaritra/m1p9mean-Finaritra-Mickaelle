@@ -28,6 +28,8 @@ import { LeftmenuComponent } from './include/leftmenu/leftmenu.component';
 import { HeaderboComponent } from './include/headerbo/headerbo.component';
 import { FooterComponent } from './include/footer/footer.component';
 import { LoaderComponent } from './include/loader/loader.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RestoBoComponent } from './resto-bo/resto-bo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,8 @@ import { LoaderComponent } from './include/loader/loader.component';
     LeftmenuComponent,
     HeaderboComponent,
     FooterComponent,
-    LoaderComponent
+    LoaderComponent,
+    RestoBoComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,8 @@ import { LoaderComponent } from './include/loader/loader.component';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
