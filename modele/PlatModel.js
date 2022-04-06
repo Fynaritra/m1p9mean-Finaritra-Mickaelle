@@ -97,13 +97,14 @@ module.exports = class PlatModel{
         });
     }
     static chercherPlatResto(db, idresto, name, limit, numpage){
-        if(limit==0)limit = constante.limitskip;
-        if(numpage==0)numpage = constante.numskip;
+        if(isNaN(limit))limit = Number.parseInt(constante.limitskip);
+        if(isNaN(numpage))numpage = Number.parseInt(constante.numskip);
         let skips = limit * (numpage - 1);
         return new Promise((resolve, reject)=> {
             db.collection("plat").aggregate(
                 [{
                     $match:{
+                        //idResto: idresto,
                         idResto: new ObjectId(idresto),
                         nom: new RegExp(name)
                     }
@@ -121,7 +122,7 @@ module.exports = class PlatModel{
             .skip(skips).limit(limit).toArray(function (err, result) {
                 if (err) {
                     console.error(err);
-                    reject(error);
+                    reject(err);
 					return;
                 } else {
                     resolve({
@@ -154,8 +155,8 @@ module.exports = class PlatModel{
 
     static chercherPrixPlat(db, name, minprice, maxprice, limit, numpage){
         let skips = limit * (numpage - 1);
-        if(limit==0)limit = constante.limitskip;
-        if(numpage==0)numpage = constante.numskip;
+        if(isNaN(limit))limit = Number.parseInt(constante.limitskip);
+        if(isNaN(numpage))numpage = Number.parseInt(constante.numskip);
         return new Promise((resolve, reject)=> {
             if(isNaN(minprice))minprice=0;
             if(isNaN(maxprice))maxprice=9999999999;
