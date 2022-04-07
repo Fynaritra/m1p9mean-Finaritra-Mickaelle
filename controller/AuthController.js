@@ -5,6 +5,38 @@ var AuthModel = require('../modele/AuthModel');
 var TokenManager = require('../tools/TokenManager');
 var Connection = require('../db/Connection');
 
+router.post('/loginbo', (req, res) =>{
+    let connection = new Connection();
+	let promise = connection.getDB("ekaly");
+    promise.then(function(db){
+        const promise = AuthModel.loginbo(db, req.body.email, req.body.pwd);
+        promise.then(function(value){
+            if(value.data.length != 0){
+                // on genere le token
+                value.token = TokenManager.generateUsing({ email : req.body.email, pwd : req.body.pwd});
+                res.json(value);
+            }
+            else{
+                res.json({
+                    status : 400, // reponse http
+                    error : true, // pour signaler que ceci est une erreur
+                    data : "Login ou mot de passe invalide" // pour les users
+                });
+            }
+        }).catch( error => {
+            console.error(error);
+            res.json({
+                status : 400, // reponse http
+                error : true, 
+                detailed : `${error} : concernant la requête infos `, // erreur pour les devs
+                data : "Une erreur est survenue lors de la requête" 
+            });
+        }).finally(()=>{
+            connection.endConnection();
+        });
+    });
+});
+
 router.post('/login', (req, res) =>{
     let connection = new Connection();
 	let promise = connection.getDB("ekaly");
