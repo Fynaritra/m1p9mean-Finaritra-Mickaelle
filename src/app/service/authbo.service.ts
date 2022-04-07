@@ -14,6 +14,19 @@ export class AuthboService {
       "email": email,
       "pwd": pwd
     }
+    return this.http.post(`${apiEndpoint}/api/loginbo`, body, {
+      headers: new HttpHeaders({
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      })
+    })
+  }
+
+  connect(email:string, pwd: string){
+    let body = {
+      "email": email,
+      "pwd": pwd
+    }
     return this.http.post(`${apiEndpoint}/api/login`, body, {
       headers: new HttpHeaders({
         "Accept": "application/json",

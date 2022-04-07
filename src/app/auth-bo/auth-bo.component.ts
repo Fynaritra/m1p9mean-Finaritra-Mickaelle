@@ -31,7 +31,7 @@ export class AuthBOComponent implements OnInit {
         this.cookie.set('tokenbo', data.token);
         this.cookie.set('idprofil', data.data[0].idprofil);
         this.cookie.set('_id', data.data[0]._id);
-        this.route.navigate(['/platbo']);
+        this.route.navigate(['/restobo']);
       }
     })
   }

@@ -12,6 +12,7 @@ import { FicheComponent } from './plats/fiche/fiche.component';
 import { ListeComponent } from './plats/liste/liste.component';
 import { CaComponent } from './analyseBO/ca/ca.component';
 import { BenefComponent } from './analyseBO/benef/benef.component';
+import { RestoBoComponent } from './resto-bo/resto-bo.component';
 
 const routes: Routes = [
   { path: '', component: AuthBOComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   ] },
   { path: 'userbo', component: UsersBOComponent },
   { path: 'platbo', component: PlatsBOComponent },
+  { path: 'restobo', component: RestoBoComponent },
 ];
 
 @NgModule({

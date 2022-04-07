@@ -30,6 +30,7 @@ import { FooterComponent } from './include/footer/footer.component';
 import { LoaderComponent } from './include/loader/loader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RestoBoComponent } from './resto-bo/resto-bo.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { RestoBoComponent } from './resto-bo/resto-bo.component';
     HeaderboComponent,
     FooterComponent,
     LoaderComponent,
-    RestoBoComponent
+    RestoBoComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
