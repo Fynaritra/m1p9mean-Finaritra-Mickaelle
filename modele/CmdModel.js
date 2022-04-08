@@ -106,6 +106,7 @@ module.exports = class CmdModel{
     static cmdParResto(db, idresto, daty1, daty2, etat){
         if(isNaN(limit))limit = Number.parseInt(constante.limitskip);
         if(isNaN(numpage))numpage = Number.parseInt(constante.numskip);
+        if(isNaN(etat))etat = contante.etatcree;
         let skips = limit * (numpage - 1);
         return new Promise((resolve, reject)=> {
             db.collection("commande").aggregate(
