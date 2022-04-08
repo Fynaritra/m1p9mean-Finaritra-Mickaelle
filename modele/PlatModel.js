@@ -113,7 +113,7 @@ module.exports = class PlatModel{
                     $lookup:{
                         from: "resto",
                         localField: "idResto",
-                        foreignField: "id",
+                        foreignField: "_id",
                         as: "resto_dc"
                     }
                 }

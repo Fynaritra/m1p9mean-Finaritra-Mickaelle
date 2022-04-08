@@ -4,30 +4,6 @@ var EmailModel = require('../tools/Email');
 module.exports = class AuthModel{
 
     //user sign in
-    static loginbo(db, email, password){
-        return new Promise((resolve, reject)=> {
-            db.collection("utilisateur").find(
-                {
-                    email : email,
-                    pwd : password
-                    //Ajouter état hoe admin
-                }
-            ).toArray(function (err, result) {
-                if (err) {
-                    console.error(err);
-                    reject(error);
-					return;
-                } else {
-                    resolve({
-                        "status": 200,
-                        "data": result
-                    });
-                }
-            });
-        });
-    }
-
-    //user sign in
     static login(db, email, password){
         return new Promise((resolve, reject)=> {
             db.collection("utilisateur").find(

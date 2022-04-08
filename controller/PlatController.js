@@ -72,7 +72,7 @@ router.post('/insert', (req, res)=>{
     let connection = new Connection();
 	let dbpromise = connection.getDB("ekaly");
     dbpromise.then(function(db){
-        const promise = PlatModel.insert(db, req.body.idResto, req.body.categorie, req.body.nom, req.body.description, req.body.prixvente, req.body.revient, constante.etatcree);
+        const promise = PlatModel.insert(db, req.body.idresto, req.body.categorie, req.body.nom, req.body.description, req.body.prixvente, req.body.revient, constante.etatcree);
         promise.then(function(value){
             res.json(value);
         }).catch( error => {

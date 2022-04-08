@@ -1,22 +1,22 @@
 db.createCollection('profil');
 db.profil.insertMany([
     {
-        id: 'PRF001',
+        
         val:'client',
         desce:'Clients du site'
     },
     {
-        id: 'PRF002',
+        
         val:'restaurant',
         desce:'Restaurateurs, partenaires d`E-Kaly'
     },
     {
-        id: 'PRF003',
+        
         val:'liveur',
         desce:'Livreurs',
     },
       {
-        id: 'PRF004',
+        
         val:'admin',
         desce:'Administrateur d`E-Kaly',
     }
@@ -25,261 +25,239 @@ db.profil.insertMany([
 db.createCollection('resto');
 db.resto.insertMany([
     {
-        id:'RES001',
+       
         name: 'Kitonotono',
         address:'Ankorondrano',
         spec: 'Viandes et grillades',
         accueil: ''
     },
     {
-        id:'RES002',
+        
         name: 'Nerone',
         address:'Isoraka',
         spec: 'Pizzas, Cuisine italienne',
         accueil: ''
     },
     {
-        id:'RES003',
+        
         name: 'O`loft chinois',
         address:'Antanimena',
         spec: 'Cuicine chinoise',
         accueil: ''
     },
     {
-        id:'RES004',
+        
         name: 'Chick`n Art',
         address:'Ankorondrano',
         spec: '',
         accueil: ''
     },
     {
-        id:'RES005',
+        
         name: 'La Toque Enchantée',
         address: 'Antanimora',
         spec: 'Cuisine chinoise',
         accueil: ''
     },
     {
-        id:'RES006',
+       
         name: 'Irish Pub',
         address: 'Isoraka',
         spec: 'Bar',
         accueil: ''
     },
     {
-        id:'RES007',
+       
         name: 'La Ruche',
         address: 'Analakely',
         spec: '',
         accueil: ''
     },
     {
-        id:'RES008',
+       
         name: 'Bread Mafan`',
         address: 'Ampasamadinika',
         spec: 'Bar Tea',
         accueil: ''
     },
     {
-        id:'RES009',
+        
         name: 'La Métisse Cantonaise',
         address: 'Tsiadana',
         spec: 'Cuisine chinoise',
         accueil: ''
     },
     {
-        id:'RES010',
+        
         name: 'Le Carnivore',
         address: 'Ambatonakanga',
         spec: 'Viandes et grillades',
         accueil: ''
     }
     ]);
-    db.resto.insert({
-        "id":"restoid", "sequencevalue": 10
-    });
-    function getRestoSeq(sequenceName){
-        var sequenceDocument = db.resto.findAndModify({
-            query:{id: sequenceName },
-            update: {$inc:{sequence_value:1}},
-            new:true
-        });
-        return sequenceDocument.sequence_value;
-    }
 
 db.createCollection('utilisateur');
 db.utilisateur.insertMany([    
     {
-        id: 'USR001',
+        
         name: 'Kitonotono Admin',
         email: 'kitonotono-ekaly@gmail.mg',
         pwd: 'kitonotono',
-        idprofil: 'PRF002',
-        idresto: 'RES001',
+        idprofil: ObjectId('624ee3b4720708c9e53a2602'),
+        idresto: ObjectId('624ee478720708c9e53a2605'),
         contact: '0320320025'
     },
     {
-        id: 'USR002',
+       
         name: 'Chick`n Art Admin',
         email: 'chicknart-ekaly@gmail.com',
         pwd: 'chicknart',
-        idprofil: 'PRF002',
-        idresto: 'RES002',
+        idprofil: ObjectId('624ee3b4720708c9e53a2602'),
+        idresto: ObjectId('624ee478720708c9e53a2606'),
         contact: '0341198700'
     },
     {
-        id: 'USR003',
+        
         name: 'O`loft Admin',
         email: 'oloft-ekaly@gmail.com',
         pwd: 'oloft',
-        idprofil: 'PRF002',
-        idresto: 'RES003',
+        idprofil: ObjectId('624ee3b4720708c9e53a2602'),
+        idresto: ObjectId('624ee478720708c9e53a2607'),
         contact:'0341108934'
     },
     {
-        id: 'USR004',
+        
         name: 'Nerone Admin',
         email: 'nerone-ekaly@gmail.com',
         pwd: 'nerone',
-        idprofil: 'PRF002',
-        idresto: 'RES004',
+        idprofil: ObjectId('624ee3b4720708c9e53a2602'),
+        idresto: ObjectId('624ee478720708c9e53a2608'),
         contact:'0323200999'
     },
     {
-        id: 'USR005',
+        
         name: 'Carnivore Admin',
         email: 'carnivore-ekaly@gmail.com',
         pwd: 'carnivore',
-        idprofil: 'PRF002',
-        idresto: 'RES005',
+        idprofil: ObjectId('624ee3b4720708c9e53a2602'),
+        idresto: ObjectId('624ee478720708c9e53a2609'),
         contact:'0333330090'
     },
     {
-        id: 'USR006',
+       
         name: 'Métisse Cantonaise Admin',
         email: 'metissecantonaise-ekaly@gmail.com',
         pwd: 'cantonaise',
-        idprofil: 'PRF002',
-        idresto: 'RES006',
+        idprofil: ObjectId('624ee3b4720708c9e53a2602'),
+        idresto: ObjectId('624ee478720708c9e53a260a'),
         contact:'0330240050'
     },
     {
-        id: 'USR007',
+        
         name: 'Bread Mafan` Admin',
         email: 'mafan-ekaly@gmail.com',
         pwd: 'mafan',
-        idprofil: 'PRF002',
-        idresto: 'RES007',
+        idprofil: ObjectId('624ee3b4720708c9e53a2602'),
+        idresto: ObjectId('624ee478720708c9e53a260b'),
         contact:'0339040020'
     },
     {
-        id: 'USR008',
+       
         name: 'La Ruche Admin',
         email: 'laruche-ekaly@gmail.com',
         pwd: 'laruche',
-        idprofil: 'PRF002',
-        idresto: 'RES008',
+        idprofil: ObjectId('624ee3b4720708c9e53a2602'),
+        idresto: ObjectId('624ee478720708c9e53a260c'),
         contact:'0324080090'
     },
     {
-        id: 'USR009',
+       
         name: 'Irish Pub Admin',
         email: 'irish-ekaly@gmail.com',
         pwd: 'irish',
-        idprofil: 'PRF002',
-        idresto: 'RES009',
+        idprofil: ObjectId('624ee3b4720708c9e53a2602'),
+        idresto: ObjectId('624ee478720708c9e53a260d'),
         contact:'0342019080'
     },
     {
-        id: 'USR010',
+       
         name: 'La Toque Admin',
         email: 'latoque-ekaly@gmail.com',
         pwd: 'enchantee',
-        idprofil: 'PRF002',
-        idresto: 'RES010',
+        idprofil: ObjectId('624ee3b4720708c9e53a2602'),
+        idresto: ObjectId('624ee478720708c9e53a260e'),
         contact:'0321045078'
     },
     {
-        id: 'USR011',
+       
         name: 'Ismael',
         email: 'isma.raveloson@gmail.com',
         pwd: 'client',
-        idprofil: 'PRF001',
-        idresto: '',
+        idprofil: ObjectId('624ee3b4720708c9e53a2601'),
+        idresto: ObjectId(),
         contact:'0322846090'
     },
     {
-        id: 'USR012',
+        
         name: 'Fy',
         email: 'finaritra.mickaelle@yahoo.com',
         pwd: 'fy',
-        idprofil: 'PRF001',
-        idresto: '',
+        idprofil: ObjectId('624ee3b4720708c9e53a2601'),
+        idresto: ObjectId(),
         contact:'0326922773'
     },
     {
-        id: 'USR013',
+       
         name: 'Aina',
         email: 'aina-ekaly@gmail.com',
         pwd: 'aina',
-        idprofil: 'PRF001',
-        idresto: '',
+        idprofil: ObjectId('624ee3b4720708c9e53a2601'),
+        idresto: ObjectId(),
         contact:'0320290080'
     },
     {
-        id: 'USR014',
+       
         name: 'Sedra',
         email: 'sedra-ekaly@gmail.com',
         pwd: 'livreur',
-        idprofil: 'PRF003',
-        idresto: '',
+        idprofil: ObjectId('624ee3b4720708c9e53a2603'),
+        idresto: ObjectId(),
         contact:''
     },
     {
-        id: 'USR015',
+       
         name: 'Zo',
         email: 'zo-ekaly@gmail.com',
         pwd: 'livreur',
-        idprofil: 'PRF003',
-        idresto: '',
+        idprofil: ObjectId('624ee3b4720708c9e53a2603'),
+        idresto: ObjectId(),
         contact:''
     },
     {
-        id: 'USR016',
+        
         name: 'Admin 1',
         email: 'admin1-ekaly@gmail.com',
         pwd: 'admin',
-        idprofil: 'PRF004',
-        idresto: '',
+        idprofil: ObjectId('624ee3b4720708c9e53a2604'),
+        idresto: ObjectId(),
         contact:'0343430099'
     },
     {
-        id: 'USR017',
+        
         name: 'Admin 2',
         email: 'admin1-ekaly@gmail.com',
         pwd: 'admin',
-        idprofil: 'PRF004',
-        idresto: '',
+        idprofil: ObjectId('624ee3b4720708c9e53a2604'),
+        idresto: ObjectId(),
         contact:'0343430098'
     }
 ]);
-db.utilisateur.insert({
-        "id":"utilisateurid", "sequencevalue": 10
-    });
-    function getUserSeq(sequenceName){
-        var sequenceDocument = db.utilisateur.findAndModify({
-            query:{id: sequenceName },
-            update: {$inc:{sequence_value:1}},
-            new:true
-        });
-        return sequenceDocument.sequence_value;
-    }
 
 db.createCollection('plat');
 db.plat.insertMany([
     {
-        id:'PLT0001',
-        idResto: 'RES001',
+       
+        idresto: ObjectId('624ee478720708c9e53a2605'),
         categorie:'Viande',
         nom:'Ribs grillé',
         description:'',
@@ -288,8 +266,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0002',
-        idResto: 'RES001',
+        
+        idresto: ObjectId('624ee478720708c9e53a2605'),
         categorie:'Viande',
         nom:'Entrecote grillée',
         description:'',
@@ -298,8 +276,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0003',
-        idResto: 'RES001',
+        
+        idresto: ObjectId('624ee478720708c9e53a2605'),
         categorie:'Viande',
         nom:'Brochette de poulet',
         description:'',
@@ -308,8 +286,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0004',
-        idResto: 'RES001',
+       
+        idresto: ObjectId('624ee478720708c9e53a2605'),
         categorie:'Brochette de saucisse',
         nom:'Steak',
         description:'',
@@ -318,8 +296,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0005',
-        idResto: 'RES001',
+       
+        idresto: ObjectId('624ee478720708c9e53a2605'),
         categorie:'Pates',
         nom:'Spaghetti bolognaise',
         description:'',
@@ -328,8 +306,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0006',
-        idResto: 'RES002',
+        
+        idresto: ObjectId('624ee478720708c9e53a2606'),
         categorie:'Pates, Soupe',
         nom:'Soupe au pistou',
         description:'',
@@ -338,8 +316,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0007',
-        idResto: 'RES002',
+        
+        idresto: ObjectId('624ee478720708c9e53a2606'),
         categorie:'Pates',
         nom:'Spaghetti à la carbonara',
         description:'',
@@ -348,8 +326,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0008',
-        idResto: 'RES003',
+        
+        idresto: ObjectId('624ee478720708c9e53a2607'),
         categorie:'Snacking',
         nom:'Crevettes panées',
         description:'',
@@ -358,8 +336,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0009',
-        idResto: 'RES003',
+        
+        idresto: ObjectId('624ee478720708c9e53a2607'),
         categorie:'Snacking',
         nom:'Pao tsasiou',
         description:'',
@@ -368,8 +346,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0010',
-        idResto: 'RES003',
+       
+        idresto: ObjectId('624ee478720708c9e53a2607'),
         categorie:'Snacking',
         nom:'Wan tan',
         description:'',
@@ -378,8 +356,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0011',
-        idResto: 'RES004',
+        
+        idresto: ObjectId('624ee478720708c9e53a2608'),
         categorie:'Poulet',
         nom:'Poulet rôti',
         description:'',
@@ -388,8 +366,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0012',
-        idResto: 'RES004',
+        
+        idresto: ObjectId('624ee478720708c9e53a2608'),
         categorie:'Poulet',
         nom:'Poulet Chick`n Art',
         description:'Poulet avec accompagnement au choix: frites, salades, riz',
@@ -398,8 +376,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0013',
-        idResto: 'RES004',
+        
+        idresto: ObjectId('624ee478720708c9e53a2608'),
         categorie:'Poulet',
         nom:'Brochettes de poulet',
         description:'4 Brochettes de poulet, avec sauce au choix: pesto, pistache',
@@ -408,8 +386,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0014',
-        idResto: 'RES005',
+        
+        idresto: ObjectId('624ee478720708c9e53a2609'),
         categorie:'Crustacés',
         nom:'Porc aux crevettes',
         description:'',
@@ -418,8 +396,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0015',
-        idResto: 'RES005',
+        
+        idresto: ObjectId('624ee478720708c9e53a2609'),
         categorie:'Crustacés',
         nom:'Beignets de crevettes',
         description:'',
@@ -428,8 +406,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0016',
-        idResto: 'RES005',
+        
+        idresto: ObjectId('624ee478720708c9e53a2609'),
         categorie:'Crustacés',
         nom:'Crevettes aux poivres verts',
         description:'',
@@ -438,8 +416,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0017',
-        idResto: 'RES006',
+       
+        idresto: ObjectId('624ee478720708c9e53a260a'),
         categorie:'Pizzas',
         nom:'Pizza Margarita',
         description:'Tomates, fromage, olives noires, basilic',
@@ -448,8 +426,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0018',
-        idResto: 'RES006',
+        
+        idresto: ObjectId('624ee478720708c9e53a260a'),
         categorie:'Pizzas',
         nom:'Pizza Reine',
         description:'Jambon, champignons, olives',
@@ -458,8 +436,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0019',
-        idResto: 'RES006',
+       
+        idresto: ObjectId('624ee478720708c9e53a260a'),
         categorie:'Pizzas',
         nom:'Pizza bolognaise',
         description:'Viandes hachées, oignon, ail',
@@ -468,8 +446,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0020',
-        idResto: 'RES006',
+        
+        idresto: ObjectId('624ee478720708c9e53a260a'),
         categorie:'Pizzas',
         nom:'Pizza Fruits de mer',
         description:'Poisson, crevette, calmar',
@@ -478,8 +456,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0021',
-        idResto: 'RES007',
+        
+        idresto: ObjectId('624ee478720708c9e53a260b'),
         categorie:'Viande',
         nom:'Steak',
         description:'',
@@ -488,8 +466,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0022',
-        idResto: 'RES007',
+       
+        idresto: ObjectId('624ee478720708c9e53a260b'),
         categorie:'Soupe',
         nom:'Tsock',
         description:'Riz mixé, oeuf, viandes',
@@ -498,8 +476,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0023',
-        idResto: 'RES007',
+       
+        idresto: ObjectId('624ee478720708c9e53a260b'),
         categorie:'Snacking',
         nom:'Crevettes panées',
         description:'',
@@ -508,8 +486,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0024',
-        idResto: 'RES008',
+       
+        idresto: ObjectId('624ee478720708c9e53a260c'),
         categorie:'Salade',
         nom:'Salade César',
         description:'Poulet, parmesan, œuf dur et tomate cerise pour accompagner une salade fraîche à souhait',
@@ -518,8 +496,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0025',
-        idResto: 'RES008',
+       
+        idresto: ObjectId('624ee478720708c9e53a260c'),
         categorie:'Patisserie',
         nom:'Dunes à la vanille',
         description:'',
@@ -528,8 +506,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0026',
-        idResto: 'RES008',
+       
+        idresto: ObjectId('624ee478720708c9e53a260c'),
         categorie:'Patisserie',
         nom:'Total Bread',
         description:'petit-déjeuner complet: oeuf sur plat, jambon, fromage, pain, viennoiserie au choix, thé ou café, yaourt, jus de fruit',
@@ -538,8 +516,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0027',
-        idResto: 'RES008',
+       
+        idresto: ObjectId('624ee478720708c9e53a260c'),
         categorie:'Patisserie',
         nom:'Brioche feuilletée',
         description:'',
@@ -548,8 +526,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0028',
-        idResto: 'RES008',
+        
+        idresto: ObjectId('624ee478720708c9e53a260c'),
         categorie:'Patisserie',
         nom:'Tarte aux fruits',
         description:'',
@@ -558,8 +536,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT0029',
-        idResto: 'RES008',
+        
+        idresto: ObjectId('624ee478720708c9e53a260c'),
         categorie:'Patisserie',
         nom:'Forêt noire',
         description:'',
@@ -568,8 +546,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT00030',
-        idResto: 'RES009',
+        
+        idresto: ObjectId('624ee478720708c9e53a260d'),
         categorie:'Soupe',
         nom:'Soupe garnie',
         description:'',
@@ -578,8 +556,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT00031',
-        idResto: 'RES009',
+        
+        idresto: ObjectId('624ee478720708c9e53a260d'),
         categorie:'Soupe',
         nom:'Soupe garnie spéciale',
         description:'',
@@ -588,8 +566,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT00032',
-        idResto: 'RES009',
+        
+        idresto: ObjectId('624ee478720708c9e53a260d'),
         categorie:'Soupe',
         nom:'Soupe spéciale métisse cantonaise',
         description:'',
@@ -598,8 +576,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT00033',
-        idResto: 'RES009',
+       
+        idresto: ObjectId('624ee478720708c9e53a260d'),
         categorie:'Soupe',
         nom:'Soupe demi-lune garnie spéciale',
         description:'',
@@ -608,8 +586,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT00034',
-        idResto: 'RES009',
+       
+        idresto: ObjectId('624ee478720708c9e53a260d'),
         categorie:'Soupe',
         nom:'Soupe flocon de neige spéciale',
         description:'',
@@ -618,8 +596,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT00035',
-        idResto: 'RES009',
+       
+        idresto: ObjectId('624ee478720708c9e53a260d'),
         categorie:'Snacking',
         nom:'Nems au poulet',
         description:'',
@@ -628,8 +606,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT00036',
-        idResto: 'RES009',
+       
+        idresto: ObjectId('624ee478720708c9e53a260d'),
         categorie:'Snacking',
         nom:'Nems au porc',
         description:'',
@@ -638,8 +616,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT00037',
-        idResto: 'RES009',
+       
+        idresto: ObjectId('624ee478720708c9e53a260d'),
         categorie:'Snacking',
         nom:'Nems au poisson',
         description:'',
@@ -648,8 +626,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT00038',
-        idResto: 'RES010',
+       
+        idresto: ObjectId('624ee478720708c9e53a260e'),
         categorie:'Viande',
         nom:'Os à moelle au gros sel',
         description:'',
@@ -658,8 +636,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT00039',
-        idResto: 'RES010',
+       
+        idresto: ObjectId('624ee478720708c9e53a260e'),
         categorie:'Viande',
         nom:'Porc au caramel et riz sauté aux légumes',
         description:'',
@@ -668,8 +646,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT00040',
-        idResto: 'RES010',
+       
+        idresto: ObjectId('624ee478720708c9e53a260e'),
         categorie:'Viande',
         nom:'Boeuf à la bière et pain d`épice',
         description:'',
@@ -678,8 +656,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT00041',
-        idResto: 'RES010',
+       
+        idresto: ObjectId('624ee478720708c9e53a260e'),
         categorie:'Viande',
         nom:'Assiette de côtes d`agneau grillées',
         description:'',
@@ -688,8 +666,8 @@ db.plat.insertMany([
         etat:1
     },
     {
-        id:'PLT00042',
-        idResto: 'RES010',
+        
+        idresto: ObjectId('624ee478720708c9e53a260e'),
         categorie:'Viande',
         nom:'Magret de canard sauce cacao et mousseline de patate douce',
         description:'',
@@ -698,27 +676,6 @@ db.plat.insertMany([
         etat:1
     }
 ]);
-    db.plat.insert({
-        "id":"platid", "sequencevalue": 70
-    });
-    function getPlatSeq(sequenceName){
-        var sequenceDocument = db.plat.findAndModify({
-            query:{id: sequenceName },
-            update: {$inc:{sequence_value:1}},
-            new:true
-        });
-        return sequenceDocument.sequence_value;
-    }
 
+dv.createCollection('panier');
 db.createCollection('commande');
-db.commande.insert({
-        "id":"cmdid", "sequencevalue": 1
-    });
-    function getCmdSeq(sequenceName){
-        var sequenceDocument = db.commande.findAndModify({
-            query:{id: sequenceName },
-            update: {$inc:{sequence_value:1}},
-            new:true
-        });
-        return sequenceDocument.sequence_value;
-    }
