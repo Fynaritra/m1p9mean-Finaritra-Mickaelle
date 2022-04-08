@@ -1,15 +1,65 @@
 const ObjectId = require('mongodb').ObjectId;
 const constante = require('../tools/const.config');
 
-module.exports = class LivraisonModel{
+module.exports = class CmdModel{
+    //nombre de plats vendus par resto
+    static platsVendus(db, daty1, daty2){
+        return new Promise((resolve, reject)=>{
+            
+        })
+    }
+
+
+    //CA, benefice par resto
+    static getDBResto(db, idresto, daty1, daty2){
+        return new Promise((resolve, reject)=>{
+            db.collection("commande").aggregate([
+                {
+                    $match:{
+                        idresto: new ObjectId(idresto),
+                        etat: {
+                            $gte: constante.etatlivre
+                        },
+                        daty:{
+                            $gte: new Date(daty1),
+                            $lte: new Date(daty2)
+                        }
+                    },
+                    $group:{
+                        _id: idresto,
+                        ca: { 
+                            $sum:{ $multiply: ["plats.$.prixvente", "plats.$.quantite"] }
+                        },
+                        revient: {
+                            $sum:{ $multiply: ["plats.$.revient", "plats.$.quantite"] }
+                        },
+                        benefice:{
+                            $sum:{ $substract: [$.$ca, $.$revient] }
+                        }
+                    }
+                }
+            ]).toArray(function(err, response){
+                if(err){
+                    reject(err);
+                    return;
+                }else{
+                    resolve({
+                        "status": 200,
+                        "data": response
+                    })
+                }
+            })
+        })
+    }
+
     //modif
-    static updateEtat(db, id, idlivreur, etat){
+    static modif(db, id, idplat, quantite){
         return new Promise((resolve, reject)=> {
-            db.collection("livraison").findOneAndUpdate(
-                { _id: new ObjectId(id), idlivreur: idlivreur },
+            db.collection("commande").findOneAndUpdate(
+                { _id: new ObjectId(id), "plats.$.idplat": new ObjectId(idplat)},
                 {
                     $set: {
-                        etat: etat
+                        "plats.$.quantite": quantite
                     }
                 },
                 {
@@ -29,13 +79,14 @@ module.exports = class LivraisonModel{
     }
 
     //saisie
-    static insert(db, idlivreur, idresto, commandes){
+    static insert(db, idclient, idresto, plats, daty){
         return new Promise((resolve, reject)=>{
-            db.collection("livraison").insertOne(
+            db.collection("commande").insertOne(
                 {
-                    idlivreur : idlivreur,
+                    idclient : idclient,
                     idresto : idresto,
-                    commandes: commandes,
+                    daty: new Date(daty),
+                    plats: plats,
                     etat : Number.parseInt(etatcree)
                 }
             ).then(function(data) {
@@ -52,12 +103,12 @@ module.exports = class LivraisonModel{
     }
 
     //par resto
-    static livParResto(db, idresto, etat, daty1,daty2){
+    static cmdParResto(db, idresto, daty1, daty2, etat){
         if(isNaN(limit))limit = Number.parseInt(constante.limitskip);
         if(isNaN(numpage))numpage = Number.parseInt(constante.numskip);
         let skips = limit * (numpage - 1);
         return new Promise((resolve, reject)=> {
-            db.collection("livraison").aggregate(
+            db.collection("commande").aggregate(
                 [{
                     $match:{
                         idresto: new ObjectId(idresto),
@@ -96,15 +147,15 @@ module.exports = class LivraisonModel{
     }
 
     //par personne
-    static livParPers(db, idlivreur, etat){
+    static cmdParPers(db, idclient, etat){
         if(isNaN(limit))limit = Number.parseInt(constante.limitskip);
         if(isNaN(numpage))numpage = Number.parseInt(constante.numskip);
         let skips = limit * (numpage - 1);
         return new Promise((resolve, reject)=> {
-            db.collection("livraison").aggregate(
+            db.collection("commande").aggregate(
                 [{
                     $match:{
-                        idlivreur: new ObjectId(idlivreur),
+                        idclient: new ObjectId(idclient),
                         etat:{
                             $gte: Number.parseInt(etat)
                         }
@@ -113,7 +164,7 @@ module.exports = class LivraisonModel{
                     {
                     $lookup:{
                         from: "utilisateur",
-                        localField: "idlivreur",
+                        localField: "idclient",
                         foreignField: "_id",
                         as: "client"
                     }
@@ -138,7 +189,7 @@ module.exports = class LivraisonModel{
     //fiche
     static fiche(db, id){
         return new Promise((resolve, reject)=> {
-            db.collection("livraison").find({
+            db.collection("commande").find({
                 _id: new ObjectId(id)
             }).toArray(function (err, result) {
                 if (err) {
@@ -160,7 +211,7 @@ module.exports = class LivraisonModel{
         if(isNaN(limit))limit = Number.parseInt(constante.limitskip);
         if(isNaN(numpage))numpage = Number.parseInt(constante.numskip);
         return new Promise((resolve, reject)=> {
-            db.collection("livraison").find({})
+            db.collection("commande").find({})
             .skip(skips).limit(limit).toArray(function (err, result) {
                 if (err) {
                     console.error(err);
