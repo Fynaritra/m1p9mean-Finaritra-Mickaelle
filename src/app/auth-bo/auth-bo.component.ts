@@ -24,7 +24,7 @@ export class AuthBOComponent implements OnInit {
   }
 
   connectbo(){
-    this.serv.connectbo(this.email, this.pwd).subscribe((data:any)=>{
+    this.serv.connect(this.email, this.pwd).subscribe((data:any)=>{
       if(data.status!=200){
         alert(data.data);
       }else{

@@ -13,9 +13,11 @@ import { ListeComponent } from './plats/liste/liste.component';
 import { CaComponent } from './analyseBO/ca/ca.component';
 import { BenefComponent } from './analyseBO/benef/benef.component';
 import { RestoBoComponent } from './resto-bo/resto-bo.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 const routes: Routes = [
   { path: '', component: AuthBOComponent },
+  { path: 'inscription', component: InscriptionComponent },
   { path: 'authfo', component: AuthComponent },
   { path: 'inscription', component: RegistrationComponent },
   { path: 'platfo', component: PlatsComponent, children:[
