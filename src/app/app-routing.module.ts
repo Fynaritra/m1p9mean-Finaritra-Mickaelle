@@ -2,38 +2,29 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthBOComponent } from './auth-bo/auth-bo.component';
 import { AuthComponent } from './auth/auth.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { PlatsComponent } from './plats/plats.component';
-import { PlatsBOComponent } from './plats-bo/plats-bo.component';
-import { UsersBOComponent } from './users-bo/users-bo.component';
-import { AnalyseBOComponent } from './analyse-bo/analyse-bo.component';
-import { UpdateComponent } from './plats/update/update.component';
-import { FicheComponent } from './plats/fiche/fiche.component';
-import { ListeComponent } from './plats/liste/liste.component';
-import { CaComponent } from './analyseBO/ca/ca.component';
-import { BenefComponent } from './analyseBO/benef/benef.component';
-import { RestoBoComponent } from './resto-bo/resto-bo.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { CmdComponent } from './pages/admin/cmd/cmd.component';
+import { TdbComponent } from './pages/admin/tdb/tdb.component';
+import { ClientComponent } from './pages/client/client.component';
+import { FicheComponent } from './pages/resto/crud/fiche.component';
+import { FicheplatComponent } from './pages/client/plats/ficheplat/ficheplat.component';
+import { PanierComponent } from './pages/client/plats/panier/panier.component';
+import { CmdalivrerComponent } from './pages/livreur/cmdalivrer/cmdalivrer.component';
+import { LivreurComponent } from './pages/livreur/livreur.component';
+import { BenefComponent } from './pages/resto/benef/benef.component';
+import { InsertComponent } from './pages/resto/crud/insert/insert.component';
+import { UpdateComponent } from './pages/resto/crud/update/update.component';
+import { RestoComponent } from './pages/resto/resto.component';
+import { AllpagesComponent } from './pages/allpages.component';
 
 const routes: Routes = [
-  { path: '', component: AuthBOComponent },
+  {path: '', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
+  { path: 'authbo', component: AuthBOComponent },
   { path: 'inscription', component: InscriptionComponent },
-  { path: 'authfo', component: AuthComponent },
-  { path: 'inscription', component: RegistrationComponent },
-  { path: 'platfo', component: PlatsComponent, children:[
-    { path: 'fiche', component: FicheComponent},
-    { path: 'liste', component: ListeComponent},
-    { path: 'modif', component: UpdateComponent},
-    { path: 'recherche', component: AuthComponent}
-  ] },
-  { path: 'analyseBO', component: AnalyseBOComponent, children:[
-    { path: 'ca', component: CaComponent},
-    { path: 'benef', component: BenefComponent}
-  ] },
-  { path: 'userbo', component: UsersBOComponent },
-  { path: 'platbo', component: PlatsBOComponent },
-  { path: 'restobo', component: RestoBoComponent },
-];
+  { path: 'authfo', component: AuthComponent }
+  ] 
+;
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

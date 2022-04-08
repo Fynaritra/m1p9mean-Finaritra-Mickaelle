@@ -9,16 +9,6 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthBOComponent } from './auth-bo/auth-bo.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { PlatsComponent } from './plats/plats.component';
-import { PlatsBOComponent } from './plats-bo/plats-bo.component';
-import { UsersBOComponent } from './users-bo/users-bo.component';
-import { AnalyseBOComponent } from './analyse-bo/analyse-bo.component';
-import { FicheComponent } from './plats/fiche/fiche.component';
-import { UpdateComponent } from './plats/update/update.component';
-import { ListeComponent } from './plats/liste/liste.component';
-import { CaComponent } from './analyseBO/ca/ca.component';
-import { BenefComponent } from './analyseBO/benef/benef.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -29,29 +19,41 @@ import { HeaderboComponent } from './include/headerbo/headerbo.component';
 import { FooterComponent } from './include/footer/footer.component';
 import { LoaderComponent } from './include/loader/loader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RestoBoComponent } from './resto-bo/resto-bo.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { CmdComponent } from './pages/admin/cmd/cmd.component';
+import { TdbComponent } from './pages/admin/tdb/tdb.component';
+import { ClientComponent } from './pages/client/client.component';
+import { PlatsComponent } from './pages/client/plats/plats.component';
+import { FicheComponent } from './pages/resto/crud/fiche.component';
+import { LivreurComponent } from './pages/livreur/livreur.component';
+import { CmdalivrerComponent } from './pages/livreur/cmdalivrer/cmdalivrer.component';
+import { InsertComponent } from './pages/resto/crud/insert/insert.component';
+import { UpdateComponent } from './pages/resto/crud/update/update.component';
+import { CommandeComponent } from './pages/resto/commande/commande.component';
+import { BenefComponent } from './pages/resto/benef/benef.component';
+import { RestoComponent } from './pages/resto/resto.component';
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     AuthBOComponent,
-    RegistrationComponent,
-    PlatsComponent,
-    PlatsBOComponent,
-    UsersBOComponent,
-    AnalyseBOComponent,
-    FicheComponent,
-    UpdateComponent,
-    ListeComponent,
-    CaComponent,
-    BenefComponent,
     LeftmenuComponent,
     HeaderboComponent,
     FooterComponent,
     LoaderComponent,
-    RestoBoComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    CmdComponent,
+    TdbComponent,
+    ClientComponent,
+    PlatsComponent,
+    FicheComponent,
+    LivreurComponent,
+    CmdalivrerComponent,
+    InsertComponent,
+    UpdateComponent,
+    CommandeComponent,
+    BenefComponent,
+    RestoComponent
   ],
   imports: [
     BrowserModule,

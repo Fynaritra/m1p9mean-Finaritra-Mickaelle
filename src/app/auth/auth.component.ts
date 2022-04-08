@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthboService } from '../service/authbo.service';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-auth',
@@ -13,7 +12,6 @@ export class AuthComponent implements OnInit {
   email:string;
   pwd: string;
   constructor(private serv: AuthboService,
-    private cookie: CookieService,
     private route: Router) { 
     this.email = "";
     this.pwd = "";
@@ -23,14 +21,14 @@ export class AuthComponent implements OnInit {
   }
 
   connect(){
-    this.serv.connect(this.email, this.pwd).subscribe((data:any)=>{
-      if(data.status!=200){
-        alert(data.data);
+    this.serv.connect(this.email, this.pwd).subscribe((response:any)=>{
+      if(response.status!=200){
+        alert(response.data);
       }else{
-        this.cookie.set('token', data.token);
-        this.cookie.set('typecl', data.data[0].idprofil);
-        this.cookie.set('_id', data.data[0]._id);
-        this.route.navigate(['/platfo/liste']);
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("name", response.data[0].name);
+          localStorage.setItem("profil",response.data[0].idprofil);
+          this.route.navigate(['pages/client/']);
       }
     })
   }

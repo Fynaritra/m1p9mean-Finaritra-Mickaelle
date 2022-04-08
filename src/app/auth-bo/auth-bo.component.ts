@@ -24,14 +24,14 @@ export class AuthBOComponent implements OnInit {
   }
 
   connectbo(){
-    this.serv.connect(this.email, this.pwd).subscribe((data:any)=>{
-      if(data.status!=200){
-        alert(data.data);
+    this.serv.connect(this.email, this.pwd).subscribe((response:any)=>{
+      if(response.status!=200){
+        alert(response.data);
       }else{
-        this.cookie.set('tokenbo', data.token);
-        this.cookie.set('idprofil', data.data[0].idprofil);
-        this.cookie.set('_id', data.data[0]._id);
-        this.route.navigate(['/restobo']);
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("name", response.data[0].name);
+          localStorage.setItem("profil",response.data[0].idprofil);
+          this.route.navigate(['pages/']);
       }
     })
   }

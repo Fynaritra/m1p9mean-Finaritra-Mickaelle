@@ -7,7 +7,7 @@ export const environment = {
 };
 export const apiEndpoint = "http://localhost:3001";
 
-//export const apiEndpoint = "https://m1p9mean-finaritramickaelle.herokuapp.com/";
+//export const apiEndpoint = "https://m1p9mean-finaritramickaelle.herokuapp.com";
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
