@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { apiEndpoint } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { profiladmin, profilclient, profilliv, profilresto } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -33,21 +34,28 @@ export class AuthboService {
     localStorage.removeItem('name');
   }
   isLivreur() {
-    if (localStorage.getItem("profil") == "624ee3b4720708c9e53a2603") {
+    if (localStorage.getItem("profil") == profilliv) {
       return true;
     } else {
       return false;
     }
   }
   isResto() {
-    if (localStorage.getItem("profil") == "624ee3b4720708c9e53a2602") {
+    if (localStorage.getItem("profil") == profilresto) {
       return true;
     } else {
       return false;
     }
   }
   isAdmin() {
-    if (localStorage.getItem("profil") == "624ee3b4720708c9e53a2604") {
+    if (localStorage.getItem("profil") == profiladmin) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  isClient(){
+    if (localStorage.getItem("profil") == profilclient) {
       return true;
     } else {
       return false;
