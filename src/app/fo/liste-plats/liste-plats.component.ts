@@ -28,5 +28,4 @@ export class ListePlatsComponent implements OnInit {
       }
     })
   }
-
 }
