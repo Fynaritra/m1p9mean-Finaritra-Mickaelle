@@ -10,7 +10,7 @@ router.put('/prix', (req, res)=>{
     let connection = new Connection();
 	let dbpromise = connection.getDB("ekaly");
     dbpromise.then(function(db){
-        const promise = PlatModel.updatePrix(db, req.body.idplat, req.body.idresto, Number.parseInt(prixvente), Number.parseInt(prixrevient))
+        const promise = PlatModel.updatePrix(db, req.body.idplat, req.body.idresto, Number.parseInt(req.body.prixvente), Number.parseInt(req.body.prixrevient))
         promise.then(function(value){
             res.json(value);
         }).catch( error => {

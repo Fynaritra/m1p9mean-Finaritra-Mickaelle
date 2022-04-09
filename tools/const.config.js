@@ -1,5 +1,5 @@
 module.exports = {
-	"limitskip" : 25,
+	"limitskip" : 20,
 	"numskip" : 1,
 	"etatcree": 1,
 	"etatinvisible": 0,
