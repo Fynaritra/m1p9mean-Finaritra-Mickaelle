@@ -6,13 +6,11 @@ import { AdminGuard } from './guard/admin.guard';
 import { RestoGuard } from './guard/resto.guard';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { TdbComponent } from './pages/admin/tdb/tdb.component';
-import { FicheplatComponent } from './pages/client/plats/ficheplat/ficheplat.component';
-import { ListePlatsComponent } from './pages/client/plats/liste-plats/liste-plats.component';
-import { PanierComponent } from './pages/client/plats/panier/panier.component';
+import { ListePlatsComponent } from './fo/liste-plats/liste-plats.component';
 import { CommandeComponent } from './pages/resto/commande/commande.component';
+import { FichePlatComponent } from './fo/fiche-plat/fiche-plat.component';
 import { CrudComponent } from './pages/resto/crud/crud/crud.component';
 import { FicheComponent } from './pages/resto/crud/fiche/fiche.component';
-import { MescommandesComponent } from './pages/client/plats/mescommandes/mescommandes.component';
 import { DeconnectionComponent } from './deconnection/deconnection.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
@@ -22,9 +20,9 @@ const routes: Routes = [
   { path: 'deco', component: DeconnectionComponent},
   { path: 'client', children:[
     { path: 'acc', component: ListePlatsComponent},
-    { path: 'ficheplat', component: FicheplatComponent},
-    { path: 'panier', component: PanierComponent},
-    { path: 'mescommandes', component: MescommandesComponent}
+    { path: 'ficheplat', component: FichePlatComponent},
+    /*{ path: 'panier', component: PanierComponent},
+    { path: 'mescommandes', component: MescommandesComponent}*/
   ]},
   { path: 'authbo', component: AuthBOComponent },
   { path: 'inscription', component: InscriptionComponent },
@@ -43,7 +41,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes), 
   BrowserModule,
-CommonModule],
+  CommonModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

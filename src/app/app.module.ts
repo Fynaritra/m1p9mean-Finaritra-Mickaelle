@@ -13,7 +13,6 @@ import { AuthBOComponent } from './auth-bo/auth-bo.component';
 
 import { HeaderboComponent } from './include/headerbo/headerbo.component';
 import { FooterComponent } from './include/footer/footer.component';
-import { LoaderComponent } from './include/loader/loader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { CmdComponent } from './pages/admin/cmd/cmd.component';
@@ -26,8 +25,10 @@ import { BenefComponent } from './pages/resto/benef/benef.component';
 import { CrudComponent } from './pages/resto/crud/crud/crud.component';
 import { LoadingComponent } from './include/loading/loading.component';
 import { HttpLoadInterceptor } from './interceptor/http-load.interceptor';
-import { MescommandesComponent } from './pages/client/plats/mescommandes/mescommandes.component';
 import { DeconnectionComponent } from './deconnection/deconnection.component';
+import { ListePlatsComponent } from './fo/liste-plats/liste-plats.component';
+import { FichePlatComponent } from './fo/fiche-plat/fiche-plat.component';
+import { HeaderfoComponent } from './include/headerfo/headerfo.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,6 @@ import { DeconnectionComponent } from './deconnection/deconnection.component';
     AuthBOComponent,
     HeaderboComponent,
     FooterComponent,
-    LoaderComponent,
     InscriptionComponent,
     CmdComponent,
     TdbComponent,
@@ -47,8 +47,10 @@ import { DeconnectionComponent } from './deconnection/deconnection.component';
     BenefComponent,
     CrudComponent,
     LoadingComponent,
-    MescommandesComponent,
-    DeconnectionComponent
+    DeconnectionComponent,
+    ListePlatsComponent,
+    FichePlatComponent,
+    HeaderfoComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,7 @@ import { DeconnectionComponent } from './deconnection/deconnection.component';
     NgbModule,
     FormsModule,
     BrowserAnimationsModule,
-    CommonModule
+    //CommonModule
   ],
   providers: [
     {
