@@ -10,6 +10,7 @@ export class TdbComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

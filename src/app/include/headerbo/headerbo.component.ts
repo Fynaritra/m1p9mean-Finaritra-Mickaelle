@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderboComponent implements OnInit {
 
+  show = true;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  clickLogo(){
+    if(this.show == true){
+      this.show = false;
+    }else{
+      this.show = true;
+    } 
   }
 
 }

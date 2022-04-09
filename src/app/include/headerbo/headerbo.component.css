@@ -1,0 +1,39 @@
+.hide-menu, .collapse{
+    color: black;
+}
+.logo{
+    width: 10%;
+}
+.sous{
+    display: none;
+    box-shadow: 0px 1px 2px #CCC;
+    background-color: white;
+}
+
+nav >ul li:hover .sous{
+    display: block;
+}
+
+.sous li{
+    float: none;
+    width: 100%;
+}
+.sous a{
+    padding: 10px;
+    border-bottom: none;
+}
+.sous a:hover{
+    border-bottom: none;
+    background-color: rgba(200, 200, 200, 0.1);
+}
+
+.class-aside{
+    position: absolute;
+    width: 240px;
+    height: 100%;
+    top: 0px;
+    z-index: 10;
+    margin-top: 64px;
+    background-color: rgba(115, 108, 108, 0.393);
+    box-shadow: 1px 0px 20px rgb(0 0 0 / 8%);
+}

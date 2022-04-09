@@ -6,8 +6,17 @@ export const environment = {
   production: false
 };
 export const apiEndpoint = "http://localhost:3001";
-
 //export const apiEndpoint = "https://m1p9mean-finaritramickaelle.herokuapp.com";
+
+/**
+ * Constante pour gestion de profils dans Guard
+ */
+export const profilclient = "";
+export const profiladmin = "624ee3b4720708c9e53a2604";
+export const profilresto = "624ee3b4720708c9e53a2602";
+export const profilliv ="624ee3b4720708c9e53a2603";
+
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

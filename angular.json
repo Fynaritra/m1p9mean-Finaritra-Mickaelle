@@ -32,14 +32,7 @@
               "src/assets/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css",
               "src/assets/plugins/bower_components/chartist/dist/chartist.min.css"
             ],
-            "scripts": [
-              "src/assets/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "src/assets/js/app-style-switcher.js",
-              "src/assets/js/waves.js",
-              "src/assets/js/sidebarmenu.js",
-              "src/assets/js/custom.js",
-              "src/assets/js/pages/dashboards/dashboard1.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
