@@ -46,11 +46,11 @@ router.put('/etat', (req,res)=>{
     });
 });
 
-router.put('/update', (req,res)=>{
+router.put('/updateQte', (req,res)=>{
     let connection = new Connection();
 	let dbpromise = connection.getDB("ekaly");
     dbpromise.then(function(db){
-        const promise = CmdModel.modif(db, req.body.idplat, Number.parseInt(req.body.quantite))
+        const promise = CmdModel.modif(db, req.body.id, req.body.idplat, Number.parseInt(req.body.quantite))
         promise.then(function(value){
             res.json(value);
         }).catch( error => {
