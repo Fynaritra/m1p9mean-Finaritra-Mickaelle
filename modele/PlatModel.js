@@ -80,9 +80,25 @@ module.exports = class PlatModel {
     }
     static fichePlat(db, id) {
         return new Promise((resolve, reject) => {
-            db.collection("plat").find({
+            db.collection("plat").aggregate(
+                [{
+                    $match: {
+                        _id: new ObjectId(id)
+                    }
+                },
+                {
+                    $lookup: {
+                        from: "resto",
+                        localField: "idresto",
+                        foreignField: "_id",
+                        as: "resto_dc"
+                    }
+                }
+                ]
+            )
+            /*db.collection("plat").find({
                 _id: new ObjectId(id)
-            }).toArray(function (err, result) {
+            })*/.toArray(function (err, result) {
                 if (err) {
                     console.error(err);
                     reject(error);
@@ -117,8 +133,7 @@ module.exports = class PlatModel {
                     }
                 }
                 ]
-            )
-                .skip(skips).limit(limit).toArray(function (err, result) {
+            ).skip(skips).limit(limit).toArray(function (err, result) {
                     if (err) {
                         console.error(err);
                         reject(err);
@@ -193,33 +208,6 @@ module.exports = class PlatModel {
                 }
             });
         });
-        /*return new Promise((resolve, reject)=> {
-            if(isNaN(minprice))minprice=0;
-            if(isNaN(maxprice))maxprice=9999999999;
-            console.log(minprice);
-            db.collection("plat").find(
-                {
-                    nom : new RegExp(name, "i"),
-                    prixvente: {
-                        $gte: minprice, 
-                        $lte: maxprice
-                    //     //$eq: val
-                     },
-                    //etat :{ $gte:constante.etatvisible}
-                }
-            )
-            .skip(skips).limit(limit).toArray(function (err, result) {
-                if (err) {
-                    console.error(err);
-                    reject(error);
-                    return;
-                } else {
-                    resolve({
-                        "status": 200,
-                        "data": result
-                    });
-                }
-            });
-        });*/
+        
     }
 }
