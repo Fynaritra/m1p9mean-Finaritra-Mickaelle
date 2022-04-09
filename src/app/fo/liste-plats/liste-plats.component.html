@@ -33,14 +33,11 @@
     <form>
         <div class="search-container">
             <div class="form-group">
-                <input type="text" class="search" placeholder="Location">
-                <input type="text" class="date-from" placeholder="Check In > Check Out">
+                <input [(ngModel)]="nom" type="text" [ngModelOptions]="{standalone: true}" class="search" placeholder="Nom du plat">
+                <input [(ngModel)]="minprice" type="number" [ngModelOptions]="{standalone: true}" class="search" placeholder="Prix minimum">
+                <input [(ngModel)]="maxprice" type="number" [ngModelOptions]="{standalone: true}" class="search" placeholder="Prix maximum">
             </div>
-            <div class="form-group">
-                <input type="text" class="date-to" placeholder="Number of people">
-            </div>
-            
-            <button type="submit" class="button">Search</button>
+            <button (click)="getPlats()" class="button">Search</button>
         </div>
 
     </form>
