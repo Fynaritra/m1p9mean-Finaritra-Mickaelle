@@ -1,0 +1,293 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+  }
+/* SEARCH BAR*/
+
+.search-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: flex-start;
+  width: 80%;
+}
+
+input {
+  min-width: 20px;
+  padding: 10px;
+  margin: 0 4px 0 0;
+  border: 1px solid #666;
+  border-radius: 5px;
+  height: 30px;
+}
+
+.button {
+  padding: 8px 16px;
+  min-width: 10px;
+  word-wrap: nowrap;
+  background: rgba(165, 42, 42, 0.612);
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+.button:hover{
+  background: brown;
+}
+
+input {
+    order: 0;
+    align-self: auto;  
+}
+
+.search {
+  flex: 2 1 auto;
+}
+
+.date-from {
+  flex: 1 1 auto;
+}
+
+.date-to {
+  flex: 1 1 auto;
+}
+
+.button {
+    order: 4;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+/* END SEARCH BAR*/
+
+  /*CSS NAV*/
+  body {
+    margin: 0px;
+    font-family: 'segoe ui';
+  }
+  
+  .nav {
+    height: 50px;
+    width: 100%;
+    background-color: brown;
+    position: relative;
+  }
+  
+  .nav > .nav-header {
+    display: inline;
+  }
+  
+  .nav > .nav-header > .nav-title {
+    display: inline-block;
+    font-size: 22px;
+    color: #fff;
+    padding: 10px 10px 10px 10px;
+  }
+  
+  .nav > .nav-btn {
+    display: none;
+  }
+  
+  .nav > .nav-links {
+    display: inline;
+    float: right;
+    font-size: 18px;
+  }
+  
+  .nav > .nav-links > a {
+    display: inline-block;
+    padding: 13px 10px 13px 10px;
+    text-decoration: none;
+    color: #efefef;
+  }
+  
+  .nav > .nav-links > a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav > #nav-check {
+    display: none;
+  }
+  
+  @media (max-width:600px) {
+    .nav > .nav-btn {
+      display: inline-block;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+    .nav > .nav-btn > label {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      padding: 13px;
+    }
+    .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .nav > .nav-btn > label > span {
+      display: block;
+      width: 25px;
+      height: 10px;
+      border-top: 2px solid #eee;
+    }
+    .nav > .nav-links {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-color: #333;
+      height: 0px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 50px;
+      left: 0px;
+    }
+    .nav > .nav-links > a {
+      display: block;
+      width: 100%;
+    }
+    .nav > #nav-check:not(:checked) ~ .nav-links {
+      height: 0px;
+    }
+    .nav > #nav-check:checked ~ .nav-links {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+  }
+  /*END CSS NAV*/
+
+  
+  /* CSS LIST*/
+  h1{
+    text-align: center;
+    margin-top: 30px;
+    font-family: 'Source Serif Pro', serif;
+  }
+  
+  .buttons{
+      font-size: 22px;
+      margin-top: 2%;
+      margin-left: 4.2%;
+  }
+  
+  .fa:hover{
+      color: darkcyan;
+  }
+  
+  .container{
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  /*CSS Grid*/
+  .section-grid{
+     display: flex; 
+     padding-left: 25px;
+     padding-right: 25px;
+  }
+  .grid-prod{
+    flex: 1 1 auto;
+    display: flex; 
+    flex-flow: row wrap;  
+  }
+  .prod-grid{
+    flex: 1 1 25%;
+    margin:2%;
+    padding:12px;
+    border: 2px solid #000;
+  }
+  
+  .prod-grid img{
+    width:100%;
+  }
+  h3, p{
+    text-align: center;
+    line-height: 1.5;
+    letter-spacing: 1px;
+  }
+  
+  .btn{
+      background: darkcyan;
+      border: 1px solid darkcyan;
+      border-radius: 6px;
+      color: white;
+      font-size: 22px;
+      width: 200px;
+      height: 40px;
+      position: right;
+      margin: 10px; 
+      letter-spacing: 1px;
+      display: inline-block;
+  }
+  .btn:hover{
+      background: white;
+      border: 2px solid darkcyan;
+      border-radius: 6px;
+      color: darkcyan;
+      font-size: 22px;
+      width: 200px;
+      height: 40px;
+      position: right;
+      margin: 10px; 
+      letter-spacing: 1px;
+      font-weight: bold;
+      display: inline-block;
+  }
+  button{
+    float: right;
+  }
+  
+  .section-list{
+     display: flex; 
+     padding: 2% 4%; 
+  }
+  table {
+    width: 100%;
+    margin: 10px 10px;
+    border:2px solid #000;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  table tr td {
+    padding: 10px;
+    border-top: 2px solid #000;
+  }
+  tr td img{
+    width:100%;
+  }
+  .btn-list{
+      background: darkcyan;
+      border: 1px solid darkcyan;
+      border-radius: 6px;
+      color: white;
+      font-size: 22px;
+      width: 200px;
+      height: 40px;
+      position: right;
+      margin: 10px; 
+      margin-top: 10%;
+      letter-spacing: 1px;
+      display: inline-block;
+      
+  }
+  .btn-list:hover{
+      background: white;
+      border: 2px solid darkcyan;
+      
+      color: darkcyan;
+  
+      margin: 10%; 
+  
+  }
+  button{
+    float: right;
+  }
+  
+  @media (min-width : 320px) and (max-width : 480px) { 
+    .section-list, .buttons{
+      display: none;
+    }
+  }
+    /*END CSS LIST*/

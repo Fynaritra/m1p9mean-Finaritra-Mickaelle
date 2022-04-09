@@ -88,14 +88,14 @@ export class FonctionService {
   }
   //recherche par nom de plat, par id resto
   recherchePlatResto(idresto:string, name:string, token:string){
-    return this.http.get(`${apiEndpoint}/api/plat/resto?&isresto=${idresto}&name=${name}&token=${token}`);
+    return this.http.get(`${apiEndpoint}/api/plat/resto?idresto=${idresto}&name=${name}&token=${token}`);
   }
   //recherche multi-critère
   rechercherPlat(nom:string, minprice:number, maxprice:number, limit:number, numpage:number, token:string){
-    return this.http.get(`${apiEndpoint}/api/plat/search?&nom=${nom}&minprice=${minprice}&maxprice=${maxprice}&limit=${limit}&numpage=${numpage}&token=${token}`);
+    return this.http.get(`${apiEndpoint}/api/plat/search?nom=${nom}&minprice=${minprice}&maxprice=${maxprice}&limit=${limit}&numpage=${numpage}&token=${token}`);
   }
   getAllPlats(token:string){
-    return this.http.get(`${apiEndpoint}/api/plat/all&token=${token}`);
+    return this.http.get(`${apiEndpoint}/api/plat/all?token=${token}`);
   }
 
   //CRUD RESTO

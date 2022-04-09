@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
@@ -25,6 +26,8 @@ import { BenefComponent } from './pages/resto/benef/benef.component';
 import { CrudComponent } from './pages/resto/crud/crud/crud.component';
 import { LoadingComponent } from './include/loading/loading.component';
 import { HttpLoadInterceptor } from './interceptor/http-load.interceptor';
+import { MescommandesComponent } from './pages/client/plats/mescommandes/mescommandes.component';
+import { DeconnectionComponent } from './deconnection/deconnection.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,9 @@ import { HttpLoadInterceptor } from './interceptor/http-load.interceptor';
     CommandeComponent,
     BenefComponent,
     CrudComponent,
-    LoadingComponent
+    LoadingComponent,
+    MescommandesComponent,
+    DeconnectionComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,8 @@ import { HttpLoadInterceptor } from './interceptor/http-load.interceptor';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CommonModule
   ],
   providers: [
     {

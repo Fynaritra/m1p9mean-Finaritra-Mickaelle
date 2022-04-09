@@ -8,14 +8,12 @@ import { FonctionService } from 'src/app/service/fonction.service';
 })
 export class CrudComponent implements OnInit {
   restoList : any;
-  masterSelected:boolean;
  
   limit = 5;
   numpage = 1;
   token:any;
 
   constructor(private fonction: FonctionService) { 
-    this.masterSelected = false;
     this.token = localStorage.getItem("token");
     
   }
@@ -30,7 +28,6 @@ export class CrudComponent implements OnInit {
       if(response.status!=200){
         alert(response.data);
       }else{
-        console.log(response.data);
         this.restoList = response.data;
       }
     })
