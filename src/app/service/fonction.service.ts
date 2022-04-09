@@ -94,6 +94,11 @@ export class FonctionService {
   rechercherPlat(nom:string, minprice:number, maxprice:number, limit:number, numpage:number, token:string){
     return this.http.get(`${apiEndpoint}/api/plat/search?nom=${nom}&minprice=${minprice}&maxprice=${maxprice}&limit=${limit}&numpage=${numpage}&token=${token}`);
   }
+  //fichePlat
+  fichePlat(id:string, token:string){
+    return this.http.get(`${apiEndpoint}/api/plat/fiche?id=${id}&token=${token}`);
+  }
+
   getAllPlats(token:string){
     return this.http.get(`${apiEndpoint}/api/plat/all?token=${token}`);
   }

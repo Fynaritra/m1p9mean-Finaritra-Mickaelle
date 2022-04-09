@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
@@ -29,6 +28,7 @@ import { DeconnectionComponent } from './deconnection/deconnection.component';
 import { ListePlatsComponent } from './fo/liste-plats/liste-plats.component';
 import { FichePlatComponent } from './fo/fiche-plat/fiche-plat.component';
 import { HeaderfoComponent } from './include/headerfo/headerfo.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -57,8 +57,9 @@ import { HeaderfoComponent } from './include/headerfo/headerfo.component';
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule,
+    FormsModule, 
     BrowserAnimationsModule,
+    MatFormFieldModule
     //CommonModule
   ],
   providers: [

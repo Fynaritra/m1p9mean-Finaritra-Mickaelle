@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FonctionService } from 'src/app/service/fonction.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-liste-plats',
@@ -16,7 +17,7 @@ export class ListePlatsComponent implements OnInit {
   limit = NaN;
   numpage = NaN;
 
-  constructor(private fonction: FonctionService) {
+  constructor(private fonction: FonctionService, private router:Router) {
     this.token = localStorage.getItem("token");
     this.getPlats();
   }
