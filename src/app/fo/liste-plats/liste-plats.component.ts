@@ -29,7 +29,6 @@ export class ListePlatsComponent implements OnInit {
       if(response.status!=200){
         alert(response.data);
       }else{
-        console.log(response.data);
         this.listePlats = response.data;
       }
     })

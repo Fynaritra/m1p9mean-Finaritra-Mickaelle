@@ -1,34 +1,6 @@
-<p>liste-plats works!</p>
 <title>Liste de plats</title>
-
-<h1>Bienvenue sur E-Kaly</h1>
-
-<div class="nav">
-    <input type="checkbox" id="nav-check">
-    <div class="nav-header">
-        <div class="nav-title">
-            E-Kaly
-        </div>
-    </div>
-    <div class="nav-btn">
-        <label for="nav-check">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
-    </div>
-    <div style="flex: 1 1 auto">
-
-    </div>
-    <div class="nav-links">
-        <a href="client/mescommandes">Mes commandes en cours</a>
-        <a href="client/panier"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier</a>
-        <a href="deco">Se déconnecter</a>
-        <a href="authfo">Se connecter</a>
-        <!--<a href="" target="_blank"><i class="fa fa-list" aria-hidden="true"></i></a>-->
-    </div>
-</div>
-<div class="container">
+<app-headerfo></app-headerfo>
+<div class="mt-4 ml-4">
     <!-- Search Bar -->
     <form>
         <div class="search-container">
@@ -41,7 +13,7 @@
         </div>
 
     </form>
-
+</div>
     <!--Product Grid-->
     <div id="div1">
         <section class="section-grid">
@@ -50,9 +22,8 @@
                     <h3>{{plat.nom}}</h3>
                     <h2>{{plat.resto_dc[0].name}} {{plat.resto_dc[0].address}}</h2>
                     <p>{{plat.categorie}} - {{plat.description}}</p>
-                    <button class="btn"> Buy <i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+                    <a href="client/ficheplat?id={{plat._id}}"><button class="btn"> Buy <i class="fa fa-shopping-cart" aria-hidden="true"></i></button></a>
                 </div>
             </div>
         </section>
     </div>
-</div>
