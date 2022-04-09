@@ -5,8 +5,8 @@
 export const environment = {
   production: false
 };
-export const apiEndpoint = "http://localhost:3001";
-//export const apiEndpoint = "https://m1p9mean-finaritramickaelle.herokuapp.com";
+//export const apiEndpoint = "http://localhost:3001";
+export const apiEndpoint = "https://m1p9mean-finaritramickaelle.herokuapp.com";
 
 /**
  * Constante pour gestion de profils dans Guard
