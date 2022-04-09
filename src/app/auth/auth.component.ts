@@ -28,7 +28,7 @@ export class AuthComponent implements OnInit {
         localStorage.setItem("token", response.token);
         localStorage.setItem("name", response.data[0].name);
           localStorage.setItem("profil",response.data[0].idprofil);
-          this.route.navigate(['pages/client/']);
+          //this.route.navigate(['pages/client/']);
       }
     })
   }
