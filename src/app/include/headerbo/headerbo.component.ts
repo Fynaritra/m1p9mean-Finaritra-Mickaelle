@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthboService } from 'src/app/service/authbo.service';
 
 @Component({
   selector: 'app-headerbo',
@@ -8,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderboComponent implements OnInit {
 
   show = true;
-
-  constructor() { }
+  showMenu = true;
+  
+  constructor(private authService: AuthboService) { }
 
   ngOnInit(): void {
+    console.log("localStorage", localStorage.getItem('session'));
+    if(this.authService.isNotLogged() || this.authService.isClient()){
+      this.showMenu = false;
+    }
   }
 
   clickLogo(){

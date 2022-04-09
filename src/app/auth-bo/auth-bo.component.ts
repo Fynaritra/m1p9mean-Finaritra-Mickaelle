@@ -30,8 +30,8 @@ export class AuthBOComponent implements OnInit {
       }else{
         localStorage.setItem("token", response.token);
         localStorage.setItem("name", response.data[0].name);
-          localStorage.setItem("profil",response.data[0].idprofil);
-          this.route.navigate(['pages/']);
+        localStorage.setItem("profil",response.data[0].idprofil);
+        this.route.navigate(['admin/commande']);
       }
     })
   }
