@@ -8,9 +8,5 @@ module.exports = {
 	"etatvalider": 11,
 	"etatalivrer": 21,
 	"etatlivre": 31,
-	"etatpaye": 40,
-	"profilclient": "",
-	"profiladmin": "",
-	"profilresto": "",
-	"profilliv": ""
+	"etatpaye": 40
 }

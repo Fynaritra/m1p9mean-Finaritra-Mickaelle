@@ -25,6 +25,27 @@ router.post('/insert', (req, res)=>{
     });
 })
 
+router.put('/etat', (req,res)=>{
+    let connection = new Connection();
+	let dbpromise = connection.getDB("ekaly");
+    dbpromise.then(function(db){
+        const promise = CmdModel.updateEtat(db, req.body.idplat, req.body.idresto, req.body.action)
+        promise.then(function(value){
+            res.json(value);
+        }).catch( error => {
+            console.error(error);
+            res.json({
+                status : 400, // reponse http
+                error : true, // pour signaler que ceci est une erreur
+                detailed : `${error} : concernant la requête infos `, // erreur pour les devs
+                data : "Une erreur est survenue lors de la requête" // pour les users
+            });
+        }).finally(()=>{
+            connection.endConnection();
+        });
+    });
+});
+
 router.put('/update', (req,res)=>{
     let connection = new Connection();
 	let dbpromise = connection.getDB("ekaly");
@@ -67,7 +88,7 @@ router.get('/all', (req, res)=>{
     });
 })
 
-router.get('/pers', (req, res)=>{
+router.get('/fiche', (req, res)=>{
     let connection = new Connection();
 	let promise = connection.getDB("ekaly");
     promise.then(function(db){

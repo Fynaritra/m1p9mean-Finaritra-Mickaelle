@@ -52,6 +52,33 @@ module.exports = class CmdModel{
         })
     }
 
+    //update etat
+    static updateEtat(db, id, idResto, action){
+        return new Promise((resolve, reject)=> {
+            db.collection("commande").findOneAndUpdate(
+                { _id: new ObjectId(id), idResto: idResto },
+                {
+                    $set: {
+                        etat: etat
+                    }
+                },
+                {
+                    upsert: true
+                }
+            ).then(function(data) {
+                if(data.ok==1){
+                    resolve({
+                        "status": 200,
+                        "data": data.ops
+                    });
+                }else{
+                    reject(data);
+                }
+            });
+        });
+    }
+
+
     //modif
     static modif(db, id, idplat, quantite){
         return new Promise((resolve, reject)=> {
