@@ -14,7 +14,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { LeftmenuComponent } from './include/leftmenu/leftmenu.component';
 import { HeaderboComponent } from './include/headerbo/headerbo.component';
 import { FooterComponent } from './include/footer/footer.component';
 import { LoaderComponent } from './include/loader/loader.component';
@@ -24,7 +23,7 @@ import { CmdComponent } from './pages/admin/cmd/cmd.component';
 import { TdbComponent } from './pages/admin/tdb/tdb.component';
 import { ClientComponent } from './pages/client/client.component';
 import { PlatsComponent } from './pages/client/plats/plats.component';
-import { FicheComponent } from './pages/resto/crud/fiche.component';
+import { FicheComponent } from './pages/resto/crud/fiche/fiche.component';
 import { LivreurComponent } from './pages/livreur/livreur.component';
 import { CmdalivrerComponent } from './pages/livreur/cmdalivrer/cmdalivrer.component';
 import { InsertComponent } from './pages/resto/crud/insert/insert.component';
@@ -37,7 +36,6 @@ import { RestoComponent } from './pages/resto/resto.component';
     AppComponent,
     AuthComponent,
     AuthBOComponent,
-    LeftmenuComponent,
     HeaderboComponent,
     FooterComponent,
     LoaderComponent,
