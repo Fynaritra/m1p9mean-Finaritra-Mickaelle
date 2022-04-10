@@ -28,7 +28,7 @@ module.exports = class CmdModel {
                 , {
                     $group:
                     {
-                        _id: "$details.idplat",
+                        _id: "$details.nom",
                         ca:
                         {
                             $sum: { $multiply: ["$details.quantite", "$details.prix"] }
@@ -144,9 +144,10 @@ module.exports = class CmdModel {
                     idresto: idresto,
                     daty: new Date(daty),
                     details: details,
-                    etat: Number.parseInt(etatcree)
+                    etat: Number.parseInt(constante.etatcree)
                 }
             ).then(function (data) {
+                console.log(data);
                 if (data.insertedCount == 1) {
                     resolve({
                         "status": 200,
@@ -163,7 +164,7 @@ module.exports = class CmdModel {
     static cmdParResto(db, idresto, daty1, daty2, etat) {
         if (isNaN(limit)) limit = Number.parseInt(constante.limitskip);
         if (isNaN(numpage)) numpage = Number.parseInt(constante.numskip);
-        if (isNaN(etat)) etat = contante.etatcree;
+        if (isNaN(etat)) etat = constante.etatcree;
         let skips = limit * (numpage - 1);
         return new Promise((resolve, reject) => {
             db.collection("commande").aggregate(

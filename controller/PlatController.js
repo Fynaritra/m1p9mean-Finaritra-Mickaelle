@@ -1,9 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const constante = require('../tools/const.config');
+const AuthentificationRoutine = require("../tools/AuthentificationRoutine");
 
 var PlatModel = require('../modele/PlatModel');
 var Connection = require('../db/Connection');
+
+router.use((req, res, next) => {
+	// on fait next si la session est bonne, on retourne une erreur sinon
+	AuthentificationRoutine.check(req, res, next);
+});
 
 //Modif plat
 router.put('/prix', (req, res)=>{

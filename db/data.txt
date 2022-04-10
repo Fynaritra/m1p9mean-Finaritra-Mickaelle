@@ -677,5 +677,80 @@ db.plat.insertMany([
     }
 ]);
 
-dv.createCollection('panier');
 db.createCollection('commande');
+db.createCollection('livraison');
+db.commande.insertMany([
+    {
+        daty: new Date('01/04/2022'),
+        idclient: new ObjectId('62528fe287bdac1354cf952d'),
+        idresto: new ObjectId('624ee478720708c9e53a2605'),
+        etat: 1,
+        details: [{
+            idplat: new ObjectId('624ee59c720708c9e53a2627'),
+            quantite: 5,
+            revient: 1200,
+            prix: 5000
+        }, {
+            idplat: new ObjectId('624ee59c720708c9e53a2628'),
+            quantite: 1,
+            revient: 3200,
+            prix: 4500
+        }]
+    },
+    {daty: new Date('07/04/2022'),
+        idclient: new ObjectId('624ee596720708c9e53a2622'),
+        idresto: new ObjectId('624ee478720708c9e53a2605'),
+        etat: 1,
+        details: [{
+            idplat: new ObjectId('624ee59c720708c9e53a2627'),
+            quantite: 1,
+            revient: 4100,
+            prix: 5000
+        }, {
+            idplat: new ObjectId('624ee59c720708c9e53a2628'),
+            quantite: 1,
+            revient: 3800,
+            prix: 4500
+        }]},
+    {daty: new Date('07/04/2022'),
+        idclient: new ObjectId('62528fe287bdac1354cf952d'),
+        idresto: new ObjectId('624ee478720708c9e53a2605'),
+        etat: 1,
+        details: [{
+            idplat: new ObjectId('624ee59c720708c9e53a2627'),
+            quantite: 2,
+            revient: 1200,
+            prix: 3500
+        }]},
+    {daty: new Date('07/04/2022'),
+        idclient: new ObjectId('624ee596720708c9e53a2621'),
+        idresto: new ObjectId('624ee478720708c9e53a2605'),
+        etat: 1,
+        details: [{
+            idplat: new ObjectId('624ee59c720708c9e53a2627'),
+            quantite: 5,
+            revient: 9000,
+            prix: 12000
+        }, {
+            idplat: new ObjectId('624ee59c720708c9e53a2628'),
+            quantite: 1,
+            revient: 4200,
+            prix: 4500
+        }]},
+    {
+        daty: new Date('07/04/2022'),
+        idclient: new ObjectId('62528fe287bdac1354cf952d'),
+        idresto: new ObjectId('624ee478720708c9e53a2607'),
+        etat: 1,
+        details: [{
+            idplat: new ObjectId('624ee59c720708c9e53a2630'),
+            quantite: 3,
+            revient: 700,
+            prix: 900
+        }, {
+            idplat: new ObjectId('624ee59c720708c9e53a262f'),
+            quantite: 2,
+            revient: 1200,
+            prix: 2300
+        }]}
+]);
