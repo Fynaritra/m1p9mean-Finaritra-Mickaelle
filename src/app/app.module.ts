@@ -33,6 +33,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { AlivrerComponent } from './pages/alivrer/alivrer.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { LivraisonclComponent } from './fo/livraisoncl/livraisoncl.component';
+import { MescommandesComponent } from './fo/mescommandes/mescommandes.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { LivraisonclComponent } from './fo/livraisoncl/livraisoncl.component';
     FichePlatComponent,
     HeaderfoComponent,
     AlivrerComponent,
-    LivraisonclComponent
+    LivraisonclComponent,
+    MescommandesComponent
   ],
   imports: [
     BrowserModule,

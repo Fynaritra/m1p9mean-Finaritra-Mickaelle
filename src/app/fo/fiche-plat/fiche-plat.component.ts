@@ -100,7 +100,7 @@ export class FichePlatComponent implements OnInit {
           
           this.panier = [];
           this.route.navigate(['client/livrer'],{
-            queryParams:{ id: response.data[0]._id}
+            queryParams:{ id: response.data[0]._id, idresto: response.data[0].idresto}
           });
         }
       })

@@ -11,6 +11,26 @@ export class FonctionService {
   isLoading = new Subject<boolean>();
 
   constructor(private http:HttpClient) { }
+
+  //LIVRAISON CLIENT
+  insertLiv(idlivreur:string, idresto:string, adresse:string, date:Date, idcommande:string, token: string){
+    let body = {
+      "idlivreur": idlivreur,
+      "idresto": idresto,
+      "adresse": adresse,
+      "date": date,
+      "idcommande": idcommande,
+      "token": token
+    }
+    return this.http.post(`${apiEndpoint}/api/cmd/insert`, body, {
+      headers: new HttpHeaders({
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      })
+    })
+  }
+  //END LIVRAISON CLIENT
+
   //BENEFICE RESTO
   benefResto(idresto:string, daty1:string, daty2:string){
     return this.http.get(`${apiEndpoint}/api/cmd/benefResto?idresto=${idresto}&daty1=${daty1}&daty2=${daty2}`);

@@ -15,7 +15,7 @@ export class InscriptionComponent implements OnInit {
   code: string = "E-";
 
   confirmation = 0;
-  error:any = {
+  error: any = {
     error: "",
     name: "",
     email: "",
@@ -30,7 +30,7 @@ export class InscriptionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  continue(){
+  continue() {
     this.error.error = "";
     this.error.name = "";
     this.error.email = "";
@@ -38,39 +38,38 @@ export class InscriptionComponent implements OnInit {
     this.error.contact = "";
     console.log(this.name);
 
-    if(this.name=="" || this.email=='' || this.password=='' || this.contact==''){
-      this.error.name = (this.name == '') ? 'Nom obligatoire': '';
-      this.error.email = (this.email == '') ? 'Email obligatoire': '';
-      this.error.password = (this.password == '') ? 'Mot de passe obligatoire': '';
-      this.error.contact = (this.contact == '') ? 'Contact obligatoire': '';
-    }else{
-      
+    if (this.name == "" || this.email == '' || this.password == '' || this.contact == '') {
+      this.error.name = (this.name == '') ? 'Nom obligatoire' : '';
+      this.error.email = (this.email == '') ? 'Email obligatoire' : '';
+      this.error.password = (this.password == '') ? 'Mot de passe obligatoire' : '';
+      this.error.contact = (this.contact == '') ? 'Contact obligatoire' : '';
+    } else {
+
       let result = this.fonction.generateCodeInscription(this.email, this.name);
-      result.subscribe((response:any) => {
-        if(response.status != 200){
+      result.subscribe((response: any) => {
+        if (response.status != 200) {
           this.error.error = "Internal Server Error";
-        }else{
+        } else {
           this.confirmation = 1;
         }
       })
     }
   }
-  inscription(){
-    this.error.code="";
+  inscription() {
+    this.error.code = "";
     this.error.error = "";
-    if(this.code==''){
+    if (this.code == '') {
       this.error.code = (this.code == '') ? 'Code obligatoire' : '';
-    }else{
-      console.log(this.code);
+    } else {
       let result = this.fonction.inscription(this.name, this.email, this.password, this.contact, this.code);
-      result.subscribe((response:any) => {
-        if(response.status == 500){
+      result.subscribe((response: any) => {
+        if (response.status == 500) {
           this.error.code = "Email déja utilisé";
         }
-        else if(response.status == 400){
+        else if (response.status == 400) {
           this.error.code = "Code invalide";
         }
-        else if(response.status == 200){
+        else if (response.status == 200) {
           alert("Bienvenue sur E-Kaly");
           this.route.navigate(['authfo/']);
         }

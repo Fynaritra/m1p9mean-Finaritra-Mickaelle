@@ -18,6 +18,7 @@ import { BenefComponent } from './pages/resto/benef/benef.component';
 import { LivreurGuard } from './guard/livreur.guard';
 import { AlivrerComponent } from './pages/alivrer/alivrer.component';
 import { LivraisonclComponent } from './fo/livraisoncl/livraisoncl.component';
+import { MescommandesComponent } from './fo/mescommandes/mescommandes.component';
 
 const routes: Routes = [
   { path: '', component: ListePlatsComponent},
@@ -26,7 +27,7 @@ const routes: Routes = [
     { path: 'acc', component: ListePlatsComponent},
     { path: 'ficheplat', component: FichePlatComponent},
     { path: 'livrer', component: LivraisonclComponent},
-    /*{ path: 'mescommandes', component: MescommandesComponent}*/
+    { path: 'mescommandes', component: MescommandesComponent}
   ]},
   { path: 'authbo', component: AuthBOComponent },
   { path: 'inscription', component: InscriptionComponent },
