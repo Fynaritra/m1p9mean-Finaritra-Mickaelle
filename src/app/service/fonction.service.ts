@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { apiEndpoint } from '../../environments/environment';
+import { apiEndpoint, profilclient } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 
@@ -11,6 +11,56 @@ export class FonctionService {
   isLoading = new Subject<boolean>();
 
   constructor(private http:HttpClient) { }
+  //INSCRIPTION
+  generateCodeInscription(email:string, name:string){
+    let body = {
+      "email": email,
+      "name": name
+    }
+    return this.http.post(`${apiEndpoint}/api/generateInscriptionCode`, body, {
+      headers: new HttpHeaders({
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      })
+    })
+  }
+
+  inscription(name:string, email:string, password:string, contact:string, code:string){
+    let body = {
+      "email": email,
+      "name": name,
+      "password": password,
+      "idprofil": profilclient,
+      "contact": contact,
+      "code": code
+    }
+    return this.http.post(`${apiEndpoint}/api/inscription`, body, {
+      headers: new HttpHeaders({
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      })
+    });
+  }
+
+  //END INSCRIPTION
+
+  //COMMANDE
+  insertCmd(idclient:string, idresto:string, plats:Object, token:string){
+    let body = {
+      "idclient": idclient,
+      "idresto": idresto,
+      "plats": plats,
+      "token": token
+    }
+    return this.http.post(`${apiEndpoint}/api/plat/insert`, body, {
+      headers: new HttpHeaders({
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      })
+    })
+  }
+
+  //END COMMANDE
 
   //LOADER PAGE
 

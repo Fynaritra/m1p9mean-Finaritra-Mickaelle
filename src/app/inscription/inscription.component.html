@@ -1,34 +1,65 @@
-
-    <div class="row">
-        <div class="col-lg-6 col-xlg-6 col-md-6">
-            <diV class = "row">
-                <main class="form-signin col-md-8 offset-2">
-                    <form>
+<div class="row">
+    <div class="col-lg-6 col-xlg-6 col-md-6">
+        <diV class="row">
+            <main class="form-signin col-md-8 offset-2">
+                <p class="text-danger">{{error.error}}</p>
+                <form *ngIf="confirmation==0">
                     <img class="mb-4" src="assets/img/logo.png" alt="" id="insc-fo">
                     <h1 class="h3 mb-3 fw-normal">Inscription</h1>
-                
+
                     <div class="form-floating mb-4">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <input [(ngModel)]="name" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="floatingInput"
+                            placeholder="E Kaly Client">
                         <label for="floatingInput">Nom</label>
+                        <p class="text-danger">{{error.name}}</p>
                     </div>
                     <div class="form-floating mb-4">
-                        <input  type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <input [(ngModel)]="email" [ngModelOptions]="{standalone: true}" type="email" class="form-control" id="floatingInput"
+                            placeholder="client@ekaly.com">
+                        <label for="floatingInput">Email</label>
+                        <p class="text-danger">{{error.email}}</p>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" type="password" class="form-control" id="floatingPassword"
+                            placeholder="password">
                         <label for="floatingPassword">Mot de passe</label>
+                        <p class="text-danger">{{error.password}}</p>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input [(ngModel)]="contact" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="floatingInput"
+                            placeholder="034 XX XXX XX">
+                        <label for="floatingInput">Contact</label>
+                        <p class="text-danger">{{error.contact}}</p>
                     </div>
                     <div class="checkbox mb-3">
                         <label>
                             <button class="w-100 btn btn-lg btn-primary" type="reset">Annuler</button>
                         </label>
-                        <label>
-                            <button (click)="inscription()" class="w-100 btn btn-lg btn-primary" type="submit">S'inscrire</button>
+                        <label class="float-right">
+                            <button (click)="continue()" class="w-100 btn btn-lg btn-primary"
+                                type="submit">Continuer</button>
                         </label>
                     </div>
                     <app-footer></app-footer>
-                    </form>
-                </main>
-            </diV>
-            </div>
-        <div class = "col-lg-6 col-xlg-6 col-md-6">
-            <img class="image-spices" src='assets/img/background-cl.jpg'>
-        </div>
+                </form>
+
+                <form *ngIf="confirmation==1">
+                    <h1>Validation via code envoyé par email</h1>
+                    <p>Veuillez consulter votre boîte de messagerie</p>
+                    <div class="form-floating mb-4">
+                        <input [(ngModel)]="code" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="floatingInput">
+                        <label for="floatingInput">Code de confirmation</label>
+                        <p class="text-danger">{{error.code}}</p>
+                    </div>
+                    <label>
+                        <button (click)="inscription()" class="w-100 btn btn-lg btn-primary"
+                            type="submit">S'inscrire</button>
+                    </label>
+                </form>
+            </main>
+        </diV>
     </div>
+    <div class="col-lg-6 col-xlg-6 col-md-6">
+        <img class="image-spices" src='assets/img/background-cl.jpg'>
+    </div>
+</div>

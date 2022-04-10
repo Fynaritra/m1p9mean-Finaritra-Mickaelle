@@ -22,6 +22,12 @@ export class AuthboService {
       })
     })
   }
+  isLogged() {
+    if (localStorage.getItem('session') == "true") {
+      return true;
+    }
+    return false;
+  }
   isNotLogged() {
     if (localStorage.getItem('session') == null) {
       return true;
@@ -29,9 +35,11 @@ export class AuthboService {
     return false;
   }
   logout() {
-    localStorage.removeItem('token');
+    localStorage.clear();
+    /*localStorage.removeItem('token');
     localStorage.removeItem('profil');
     localStorage.removeItem('name');
+    localStorage.removeItem('session');*/
   }
   isLivreur() {
     if (localStorage.getItem("profil") == profilliv) {
