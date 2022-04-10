@@ -56,7 +56,7 @@ router.post('/generateInscriptionCode', (req, res) =>{
     }).catch( error => {
         console.error(error);
         res.json({
-            status : 400, // reponse http
+            status : 500, // reponse http
             error : true, // pour signaler que ceci est une erreur
             detailed : `${error} : concernant la requête infos `, // erreur pour les devs
             data : "Une erreur est survenue lors de la requête" // pour les users
@@ -68,7 +68,8 @@ router.post('/inscription', (req, res) =>{
     let connection = new Connection();
 	let promise = connection.getDB("ekaly");
     promise.then(function(db){
-        const promise = AuthModel.inscription(db, req.body.name, req.body.email, req.body.password, req.body.idprofil, req.body.contact, req.body.code);
+        let code = req.body.code;
+        const promise = AuthModel.inscription(db, req.body.name, req.body.email, req.body.password, req.body.idprofil, '', req.body.contact, code);
         promise.then(function(value){
             res.json(value);
         }).catch( error => {

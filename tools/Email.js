@@ -32,6 +32,8 @@ module.exports = class Email {
     let result1 = Email.codeString(pseudo);
     let result2 = Email.codeString(email)+result1;
     let result3 = Email.codeString(date)+result1;
+    console.log("E-"+result2+""+result1+""+result3);
+    console.log(code);
     return ("E-"+result2+""+result1+""+result3) == code;
   }
   

@@ -48,22 +48,25 @@ module.exports = class AuthModel{
                     {
                         name : name,
                         email : email,
-                        password : password,
+                        pwd : password,
                         idprofil : idprofil,
                         idresto : idresto,
                         contact : contact
                     }
-                ).toArray(function (err, result) {
-                    if (err) {
-                        console.error(err);
-                        reject(error);
-                        return;
-                    } else {
+                ).then(function (data) {
+                    if (data.insertedCount == 1) {
                         resolve({
                             "status": 200,
-                            "data": result
+                            "data": data.ops
                         });
+                    } else {
+                        reject(data);
                     }
+                }).catch( error => {
+                    resolve({
+                        "status": 500,
+                        "data": error
+                    })
                 });
             }else{
                 resolve({
