@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const constante = require('../tools/const.config');
 
+var Connection = require('../db/Connection');
 var CmdModel = require("../modele/CmdModel");
 
 router.post('/insertAll', (req, res)=>{
