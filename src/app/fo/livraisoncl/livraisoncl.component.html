@@ -1,0 +1,24 @@
+<app-headerfo></app-headerfo>
+<main class="form-signin col-md-8 offset-2">
+    <form>
+    <h1 class="h3 mb-3 fw-normal">Infos pour la livraison</h1>
+
+    <div class="form-floating mb-4">
+        <input [(ngModel)]="adresse" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="floatingPassword" >
+        <label for="floatingPassword">Lieu de livraison</label>
+    </div>
+    <div class="form-floating mb-4">
+        <input [(ngModel)]="daty" [ngModelOptions]="{standalone: true}" type="date" class="form-control" id="floatingPassword" >
+        <label for="floatingPassword">Date de livraison</label>
+    </div>
+    <div class="checkbox mb-3">
+        <label>
+            <button class="w-100 btn btn-lg btn-danger" type="submit">Annuler</button>
+        </label>
+        <label class="right">
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Valider</button>
+        </label>
+    </div>
+    <app-footer></app-footer>
+    </form>
+</main>

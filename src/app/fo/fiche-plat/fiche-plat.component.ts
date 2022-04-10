@@ -97,7 +97,11 @@ export class FichePlatComponent implements OnInit {
           alert(response.data);
         } else {
           alert("Commande enregistrée");
+          
           this.panier = [];
+          this.route.navigate(['client/livrer'],{
+            queryParams:{ id: response.data[0]._id}
+          });
         }
       })
     }

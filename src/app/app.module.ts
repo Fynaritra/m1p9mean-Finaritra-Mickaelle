@@ -32,7 +32,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgChartsModule } from 'ng2-charts';
 import { AlivrerComponent } from './pages/alivrer/alivrer.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { Global } from 'src/app/global';
+import { LivraisonclComponent } from './fo/livraisoncl/livraisoncl.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,8 @@ import { Global } from 'src/app/global';
     ListePlatsComponent,
     FichePlatComponent,
     HeaderfoComponent,
-    AlivrerComponent
+    AlivrerComponent,
+    LivraisonclComponent
   ],
   imports: [
     BrowserModule,
