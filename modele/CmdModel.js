@@ -29,10 +29,18 @@ module.exports = class CmdModel {
                     $group:
                     {
                         _id: "$details.idplat",
-                        totalSalesAmount:
+                        ca:
                         {
                             $sum: { $multiply: ["$details.quantite", "$details.prix"] }
-                        }
+                        },
+                        revient:
+                        {
+                            $sum: { $multiply: ["$details.quantite", "$details.revient"] }
+                        }/*,
+                        benefice:
+                        {
+                            $subtract: ['$ca', '$revient']
+                        }*/
                     }
                 }
             ]).toArray(function (err, response) {

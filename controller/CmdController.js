@@ -172,7 +172,7 @@ router.get('/resto', (req, res)=>{
     });
 })
 
-router.get('/board', (req, res)=>{
+router.get('/benefResto', (req, res)=>{
     let connection = new Connection();
 	let promise = connection.getDB("ekaly");
     promise.then(function(db){
