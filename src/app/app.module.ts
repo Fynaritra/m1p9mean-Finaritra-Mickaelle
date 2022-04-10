@@ -30,6 +30,8 @@ import { FichePlatComponent } from './fo/fiche-plat/fiche-plat.component';
 import { HeaderfoComponent } from './include/headerfo/headerfo.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgChartsModule } from 'ng2-charts';
+import { AlivrerComponent } from './pages/alivrer/alivrer.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { NgChartsModule } from 'ng2-charts';
     DeconnectionComponent,
     ListePlatsComponent,
     FichePlatComponent,
-    HeaderfoComponent
+    HeaderfoComponent,
+    AlivrerComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { NgChartsModule } from 'ng2-charts';
     FormsModule, 
     BrowserAnimationsModule,
     MatFormFieldModule,
-    NgChartsModule
+    NgChartsModule,
+    DragDropModule
   ],
   providers: [
     {

@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-2 col-xs-2 col-lg-2">
+        <app-headerbo></app-headerbo>
+    </div>
+    <div class="col-md-10 col-xs-10 col-lg-10">
+        <div cdkDropListGroup>
+            <div class="example-container">
+              <h2>To do</h2>
+          
+              <div
+                cdkDropList
+                [cdkDropListData]="todo"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+              </div>
+            </div>
+          
+            <div class="example-container">
+              <h2>Done</h2>
+          
+              <div
+                cdkDropList
+                [cdkDropListData]="done"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>

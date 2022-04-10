@@ -15,6 +15,8 @@ import { DeconnectionComponent } from './deconnection/deconnection.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { BenefComponent } from './pages/resto/benef/benef.component';
+import { LivreurGuard } from './guard/livreur.guard';
+import { AlivrerComponent } from './pages/alivrer/alivrer.component';
 
 const routes: Routes = [
   { path: '', component: ListePlatsComponent},
@@ -28,6 +30,9 @@ const routes: Routes = [
   { path: 'authbo', component: AuthBOComponent },
   { path: 'inscription', component: InscriptionComponent },
   { path: 'authfo', component: AuthComponent } ,
+  { path: 'liv', children: [
+    { path: 'alivrer', component: AlivrerComponent}
+  ]},
   { path: 'admin', children: [
     { path: 'dashboard', component: TdbComponent},
     { path: 'commande', component: CommandeComponent}
