@@ -20,9 +20,9 @@
     </div>
     <div class="nav-links">
         <a href="client/mescommandes">Mes commandes en cours</a>
-        <a href="client/panier"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier</a>
-        <a href="deco">Se déconnecter</a>
-        <a href="authfo">Se connecter</a>
+        <a href="client/panier"><sup *ngIf="inPanier" id="indice">*</sup><i class="fa fa-shopping-cart" aria-hidden="true"></i> Panier</a>
+        <a *ngIf=showLogOut (click)="deconnection()">Se déconnecter</a>
+        <a *ngIf=showLogIn (click)="connection()" href="authfo">Se connecter</a>
         <!--<a href="" target="_blank"><i class="fa fa-list" aria-hidden="true"></i></a>-->
     </div>
 </div>
