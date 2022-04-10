@@ -27,6 +27,8 @@ export class AuthComponent implements OnInit {
       } else {
         localStorage.setItem("token", response.token);
         localStorage.setItem("name", response.data[0].name);
+        localStorage.setItem("idclient", response.data[0]._id);
+        localStorage.setItem("contact", response.data[0].contact);
         localStorage.setItem("profil", response.data[0].idprofil);
         localStorage.setItem("session", "true");
         this.route.navigate(['client/acc']);

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './liste-plats.component.html',
   styleUrls: ['./liste-plats.component.css']
 })
+  
 export class ListePlatsComponent implements OnInit {
 
   listePlats: any = [];
@@ -23,6 +24,9 @@ export class ListePlatsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem('panier')!=undefined){
+      console.log(JSON.parse(JSON.stringify(localStorage.getItem('panier') || '{}')));
+    }
   }
   getPlats(){
     let result = this.fonction.rechercherPlat(this.nom, this.minprice, this.maxprice, this.limit, this.numpage, this.token);

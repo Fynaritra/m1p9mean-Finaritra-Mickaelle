@@ -10,8 +10,9 @@ import { FonctionService } from 'src/app/service/fonction.service';
 export class FichePlatComponent implements OnInit {
 
   nomPers: any = "";
+  contact: any = "";
   idPlat: string = "";
-  idclient: string = "";
+  idclient: any = "";
   idresto: string = "";
   panier: any = [];
   platsResto: any = [];
@@ -34,6 +35,8 @@ export class FichePlatComponent implements OnInit {
       this.route.navigate(['authfo']);
     }
     this.nomPers = localStorage.getItem("name");
+    this.idclient = localStorage.getItem("idclient");
+    this.contact = localStorage.getItem("contact");
     this.token = localStorage.getItem("token");
     this.router.queryParams.subscribe((params: Params) => {
       this.idPlat = params['id']
@@ -68,13 +71,35 @@ export class FichePlatComponent implements OnInit {
   }
 
   commander(plat: any) {
-    if(this.panier.length!=0 && (plat.idresto!=this.panier[0].idresto)){
-      alert("Quelques articles dans le menu d'un autre restaurant ont déjà été ajoutés à votre panier. Merci d'annuler ou de valider la commande précédente");
-    }else{
-      this.panier.push(plat);
-      localStorage.setItem("panier", this.panier);
-      console.log(this.panier)
-    }
+    plat.quantite = plat.nb;
+    this.panier.push({
+      "idplat": plat._id,
+      "quantite": plat.quantite,
+      "revient": plat.revient,
+      "prix": plat.prixvente,
+      "nom": plat.nom,
+      "categorie": plat.categorie,
+      "description": plat.description
+    });
   }
 
+  annuler(){
+    this.panier = [];
+  }
+
+  finaliser(){
+    if(this.panier.length==null){
+      alert("Votre panier est vide");
+    }else{
+      let result = this.service.insertCmd(this.idclient, this.idresto, this.panier, this.token);
+      result.subscribe((response: any) => {
+        if (response.status != 200) {
+          alert(response.data);
+        } else {
+          alert("Commande enregistrée");
+          this.panier = [];
+        }
+      })
+    }
+  }
 }

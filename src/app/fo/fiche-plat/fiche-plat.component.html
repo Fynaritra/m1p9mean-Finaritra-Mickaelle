@@ -8,7 +8,31 @@
       <p><b>Chez </b> {{fiche.resto_dc[0].name}}</p>
       <p><b>Adresse: </b> {{fiche.resto_dc[0].address}}</p>
       <div>
-        <label>Veuillez choisir vos plats</label>
+        <label>Plats à valider</label>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Plat</th>
+              <th scope="col">Détails</th>
+              <th scope="col">Catégorie</th>
+              <th scope="col">Prix unitaire</th>
+              <th scope="col">Quantité à valider</th>
+              <th scope="col">Montant</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let plat of panier">
+              <td>{{plat.nom}}</td>
+              <td>{{plat.description}}</td>
+              <td>{{plat.categorie}}</td>
+              <td class="right">{{plat.prix}} Ar</td>
+              <td class="right">{{plat.quantite}}</td>
+              <td class="right">{{plat.prix * plat.quantite}} Ar</td>
+            </tr>
+          </tbody>
+        </table>
+        <div (click)="annuler()" class="button">Annuler ma commande</div>
+        <div (click)="finaliser()" class="button">Valider ma commande</div>
       </div>
       <br>
     </li>
@@ -30,8 +54,7 @@
         <td>{{plat.description}}</td>
         <td>{{plat.categorie}}</td>
         <td class="right">{{plat.prixvente}} Ar</td>
-        <td><input class="inputChild" [(ngModel)]="plat.nb" type=number>
-        </td>
+        <td><input class="inputChild" [(ngModel)]="plat.nb" type=number></td>
         <td><div (click)="commander(plat)" class="button">commander</div></td>
       </tr>
     </tbody>

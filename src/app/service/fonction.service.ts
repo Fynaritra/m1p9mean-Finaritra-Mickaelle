@@ -58,7 +58,7 @@ export class FonctionService {
       "plats": plats,
       "token": token
     }
-    return this.http.post(`${apiEndpoint}/api/plat/insert`, body, {
+    return this.http.post(`${apiEndpoint}/api/cmd/insert`, body, {
       headers: new HttpHeaders({
         "Accept": "application/json",
         "Content-Type": "application/json"
