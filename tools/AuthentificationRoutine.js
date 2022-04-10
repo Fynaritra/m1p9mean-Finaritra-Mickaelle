@@ -4,12 +4,13 @@ const AuthentificationRoutine = {};
 
 AuthentificationRoutine.check = (req, res, next) => {
 
-	next();
+	
 
 	// url sans protection
 	// let exceptions = [
 	// 	'/login', '/inscription'
 	// ];
+	
 	// let filtre = exceptions.filter(url => req.url.startsWith(url));
 	// if ( filtre.length > 0 ) {
 	// 	next();
@@ -18,6 +19,8 @@ AuthentificationRoutine.check = (req, res, next) => {
 	// 	if ( req.method == 'GET' ) {
 	// 		token = req.query.token; // le token doit figurer sur l'url 
 	// 	} else if ( req.method == 'POST' ) {
+	// 		token = req.body.token; // le token doit figurer dans le corps de la reponse
+	// 	} else if ( req.method == 'PUT' ) {
 	// 		token = req.body.token; // le token doit figurer dans le corps de la reponse
 	// 	} else if ( req.params['token'] != undefined) {
 	// 		token = req.params.token;
@@ -40,6 +43,7 @@ AuthentificationRoutine.check = (req, res, next) => {
 	// 	};
 	// 	TokenManager.verify(token, onSuccess, onError);	
 	// }
+	next();
 }
 
 module.exports = AuthentificationRoutine;
