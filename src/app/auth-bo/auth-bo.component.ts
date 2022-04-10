@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthboService } from '../service/authbo.service';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +13,6 @@ export class AuthBOComponent implements OnInit {
   pwd: string;
 
   constructor(private serv: AuthboService,
-    private cookie: CookieService,
     private route: Router) { 
     this.email = "admin1-ekaly@gmail.com";
     this.pwd = "admin";

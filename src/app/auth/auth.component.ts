@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
 export class AuthComponent implements OnInit {
 
   cmd = [];
-  email:string;
+  email: string;
   pwd: string;
   constructor(private serv: AuthboService,
-    private route: Router) { 
+    private route: Router) {
     this.email = "";
     this.pwd = "";
   }
@@ -20,15 +20,16 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  connect(){
-    this.serv.connect(this.email, this.pwd).subscribe((response:any)=>{
-      if(response.status!=200){
+  connect() {
+    this.serv.connect(this.email, this.pwd).subscribe((response: any) => {
+      if (response.status != 200) {
         alert(response.data);
-      }else{
+      } else {
         localStorage.setItem("token", response.token);
         localStorage.setItem("name", response.data[0].name);
-          localStorage.setItem("profil",response.data[0].idprofil);
-          //this.route.navigate(['pages/client/']);
+        localStorage.setItem("profil", response.data[0].idprofil);
+        localStorage.setItem("session", "true");
+        this.route.navigate(['client/acc']);
       }
     })
   }
