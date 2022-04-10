@@ -22,7 +22,7 @@ module.exports = class Email {
     let result1 = Email.codeString(pseudo);
     let result2 = Email.codeString(email)+result1;
     let result3 = Email.codeString(date)+result1;
-    return result2+""+result1+""+result3;
+    return "E-"+result2+""+result1+""+result3;
   }
 
   //verifier code de confirmation (inscription)
@@ -32,7 +32,7 @@ module.exports = class Email {
     let result1 = Email.codeString(pseudo);
     let result2 = Email.codeString(email)+result1;
     let result3 = Email.codeString(date)+result1;
-    return (result2+""+result1+""+result3) == code;
+    return ("E-"+result2+""+result1+""+result3) == code;
   }
   
   //generer code de confirmation (oublier mot de passe)
@@ -63,15 +63,15 @@ module.exports = class Email {
     let transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: '@gmail.com',
-        pass: ''
+        user: 'ekalyfy.no.reply@gmail.com',
+        pass: 'Finaritra'
       },
       tls: {
         rejectUnauthorized: false
       }
     });  
     let mailOptions = {
-      from: '@gmail.com',
+      from: 'ekalyfy.no.reply@gmail.com',
       to: email,
       subject: message,
       text: code

@@ -105,6 +105,31 @@ module.exports = class CmdModel{
         });
     }
 
+    static updatePlats(db, plat){
+        return new Promise((resolve, reject)=> {
+            db.collection("commande").findOneAndUpdate(
+                { _id: new ObjectId(id)},
+                {
+                    $set: {
+                        "plats": plat
+                    }
+                },
+                {
+                    upsert: true
+                }
+            ).then(function(data) {
+                if(data.ok==1){
+                    resolve({
+                        "status": 200,
+                        "data": data.ops
+                    });
+                }else{
+                    reject(data);
+                }
+            });
+        });
+    }
+
     //saisie
     static insert(db, idclient, idresto, plats, daty){
         return new Promise((resolve, reject)=>{

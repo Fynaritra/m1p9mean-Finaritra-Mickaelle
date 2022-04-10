@@ -120,14 +120,14 @@ module.exports = class PlatModel {
             db.collection("plat").aggregate(
                 [{
                     $match: {
-                        idResto: new ObjectId(idresto),
+                        idresto: new ObjectId(idresto),
                         nom: new RegExp(name)
                     }
                 },
                 {
                     $lookup: {
                         from: "resto",
-                        localField: "idResto",
+                        localField: "idresto",
                         foreignField: "_id",
                         as: "resto_dc"
                     }
