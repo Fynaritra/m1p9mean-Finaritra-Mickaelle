@@ -1,1 +1,26 @@
-<p>benef works!</p>
+<div class="row">
+    <div class="com-md-2 col-lg-2 col-xs-2" >
+        <app-headerbo></app-headerbo>
+    </div>
+    <div class="com-md-10 col-lg-10 col-xs-10" >
+        <p style="text-align: center; margin-top: 50px; color: #949fb1;">Bénéfice par plat, par resto</p>
+        <div class="content">
+            <div class="card" style="background-color: white;" fxFlex="90">
+                <div class="flex">
+                    <div class="flex-item">
+                        <div style="display: block">
+                            <canvas baseChart
+                              [data]="barChartData"
+                              [options]="barChartOptions"
+                              [plugins]="barChartPlugins"
+                              [type]="barChartType"
+                              (chartHover)="chartHovered($event)"
+                              (chartClick)="chartClicked($event)">
+                            </canvas>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,6 +14,7 @@ import { FicheComponent } from './pages/resto/crud/fiche/fiche.component';
 import { DeconnectionComponent } from './deconnection/deconnection.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { BenefComponent } from './pages/resto/benef/benef.component';
 
 const routes: Routes = [
   { path: '', component: ListePlatsComponent},
@@ -33,7 +34,8 @@ const routes: Routes = [
   ], canActivate:[AdminGuard]},
   { path: 'resto', children: [
     { path: 'crud', component: CrudComponent},
-    { path: 'fiche', component: FicheComponent}
+    { path: 'fiche', component: FicheComponent},
+    { path: 'benef', component: BenefComponent},
   ], canActivate:[RestoGuard]}
   ] 
 ;

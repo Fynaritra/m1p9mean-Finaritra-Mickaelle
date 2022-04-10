@@ -29,6 +29,7 @@ import { ListePlatsComponent } from './fo/liste-plats/liste-plats.component';
 import { FichePlatComponent } from './fo/fiche-plat/fiche-plat.component';
 import { HeaderfoComponent } from './include/headerfo/headerfo.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -59,8 +60,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     NgbModule,
     FormsModule, 
     BrowserAnimationsModule,
-    MatFormFieldModule
-    //CommonModule
+    MatFormFieldModule,
+    NgChartsModule
   ],
   providers: [
     {

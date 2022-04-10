@@ -11,6 +11,12 @@ export class FonctionService {
   isLoading = new Subject<boolean>();
 
   constructor(private http:HttpClient) { }
+  //BENEFICE RESTO
+  benefResto(idresto:string, daty1:string, daty2:string){
+    return this.http.get(`${apiEndpoint}/api/cmd/benefResto?idresto=${idresto}&daty1=${daty1}&daty2=${daty2}`);
+  }
+  //END BENEFICE RESTO
+  
   //INSCRIPTION
   generateCodeInscription(email:string, name:string){
     let body = {
