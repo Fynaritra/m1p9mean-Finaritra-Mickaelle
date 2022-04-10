@@ -1,5 +1,11 @@
 
-<div class="container-xl">
+<div class="row">
+  <div class="col-md-2">
+    <app-headerbo></app-headerbo>
+  </div>
+  <div class="col-md-8">
+    <h2>Liste des restaurants sur E-Kaly</h2>
+
     <div class="table-responsive">
       <div class="table-wrapper">
         <table class="table table-hover">
@@ -18,7 +24,7 @@
             </tr>
           </tbody>
         </table>
-        <div class = "">
+        <div class="">
           <i (click)="precedent()" class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
           <i (click)="suivant()" class="fa fa-chevron-right fa-2x next d-flex justify-content-end" aria-hidden="true"></i>
         </div>
@@ -26,4 +32,4 @@
       </div>
     </div>
   </div>
-  
+</div>
