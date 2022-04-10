@@ -1,32 +1,39 @@
 <app-headerfo></app-headerfo>
 
-    <body>
-                <div class="container">
-                  <ul class="blog-post columns-2">
-                    <li>
-                      <img src="" />
-                      <h3>Blog Post One</h3>
-                      <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
-                      <div class="button">Read More</div>
-                    </li>
-                    <li>
-                      <img src="" />
-                      <h3>Blog Post Two</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
-                      <div class="button">Read More</div>
-                    </li>
-                    <li>
-                     <img src="" />
-                      <h3>Blog Post Three</h3>
-                      <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
-                      <div class="button">Read More</div>
-                    </li>
-                    <li>
-                      <img src="" />
-                      <h3>Blog Post Four</h3>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
-                      <div class="button">Read More</div>
-                    </li>
-                  </ul>
-                </div>
-      </body>
+<div class="container">
+  <ul class="blog-post columns-2">
+    <li>
+      <img src="" />
+      <h2>Bienvenue {{nomPers}}</h2>
+      <p><b>Chez </b> {{fiche.resto_dc[0].name}}</p>
+      <p><b>Adresse: </b> {{fiche.resto_dc[0].address}}</p>
+      <div>
+        <label>Veuillez choisir vos plats</label>
+      </div>
+      <br>
+    </li>
+  </ul>
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Plat</th>
+        <th scope="col">Détails</th>
+        <th scope="col">Catégorie</th>
+        <th scope="col">Prix unitaire</th>
+        <th scope="col">Quantité à commander</th>
+        <th scope="col">Commander</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let plat of platsResto">
+        <td>{{plat.nom}}</td>
+        <td>{{plat.description}}</td>
+        <td>{{plat.categorie}}</td>
+        <td class="right">{{plat.prixvente}} Ar</td>
+        <td><input class="inputChild" [(ngModel)]="plat.nb" type=number>
+        </td>
+        <td><div (click)="commander(plat)" class="button">commander</div></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -21,7 +21,8 @@
                 <div *ngFor="let plat of listePlats" class="prod-grid"><img src="assets/img/logo.png" alt="kalita">
                     <h3>{{plat.nom}}</h3>
                     <h2>{{plat.resto_dc[0].name}} {{plat.resto_dc[0].address}}</h2>
-                    <p>{{plat.categorie}} - {{plat.description}}</p>
+                    <p>{{plat.categorie}}  {{plat.description}} </p>
+                    <div class="prix">{{plat.prixvente}} AR</div>
                     <a href="client/ficheplat?id={{plat._id}}"><button class="btn"> Commander <i class="fa fa-shopping-cart" aria-hidden="true"></i></button></a>
                 </div>
             </div>

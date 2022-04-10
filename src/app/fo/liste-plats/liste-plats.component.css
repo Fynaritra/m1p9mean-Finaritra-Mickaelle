@@ -5,6 +5,10 @@
   }
 /* SEARCH BAR*/
 
+.prix{
+  text-align: right;
+}
+
 .search-container {
   align-items: center;
   display: flex;
