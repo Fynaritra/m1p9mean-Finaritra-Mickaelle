@@ -16,7 +16,8 @@ export class BenefComponent implements OnInit {
   labelBoard : any =  [];
   boardDataset : any =  [
     { data: [], label: 'Chiffre d`affaire' },
-    { data: [], label: 'Revient' }
+    { data: [], label: 'Revient' },
+    { data: [], label: 'Bénéfice' }
   ];
   constructor(private fonction:FonctionService) { }
 
@@ -34,6 +35,7 @@ export class BenefComponent implements OnInit {
           this.labelBoard.push(item._id);
           this.boardDataset[0].data.push(item.ca);
           this.boardDataset[1].data.push(item.revient);
+          this.boardDataset[2].data.push(item.ca - item.revient);
         }
         this.chart?.update();
       }
