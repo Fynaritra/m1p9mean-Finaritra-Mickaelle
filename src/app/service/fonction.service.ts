@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { apiEndpoint, profilclient } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { etatliv } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +14,17 @@ export class FonctionService {
   constructor(private http:HttpClient) { }
 
   //LIVRAISON CLIENT
-  insertLiv(idlivreur:string, idresto:string, adresse:string, date:Date, idcommande:string, token: string){
+  insertLiv(idlivreur:string, idresto:string, adresse:string, date:Date, idcommande:string, token: string, contact:string){
     let body = {
       "idlivreur": idlivreur,
       "idresto": idresto,
       "adresse": adresse,
       "date": date,
       "idcommande": idcommande,
+      "contact": contact,
       "token": token
     }
-    return this.http.post(`${apiEndpoint}/api/cmd/insert`, body, {
+    return this.http.post(`${apiEndpoint}/api/liv/insert`, body, {
       headers: new HttpHeaders({
         "Accept": "application/json",
         "Content-Type": "application/json"
@@ -71,6 +73,22 @@ export class FonctionService {
   //END INSCRIPTION
 
   //COMMANDE
+  updateCmd(idcommande: string, etat: number, token:string){
+    let body = {
+      "idcommande": idcommande,
+      "etat": etat,
+      "token": token
+    }
+    return this.http.put(`${apiEndpoint}/api/cmd/etat`, body, {
+      headers: new HttpHeaders({
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      })
+    })
+  }
+  mesCommandes(idclient:string, token:string){
+    return this.http.get(`${apiEndpoint}/api/cmd/pers?token=${token}&idclient=${idclient}&etat=${etatliv}`);
+  }
   insertCmd(idclient:string, idresto:string, plats:Object, token:string){
     let body = {
       "idclient": idclient,
@@ -97,7 +115,6 @@ export class FonctionService {
   hideLoading(){
     this.isLoading.next(false);
   }
-
   //END LOADER PAGE
 
   //PLATS
@@ -219,4 +236,6 @@ export class FonctionService {
       })
     })
   }
+
+  //END CRUD RESTO
 }

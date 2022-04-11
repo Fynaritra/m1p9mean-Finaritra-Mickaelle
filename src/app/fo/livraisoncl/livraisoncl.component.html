@@ -4,12 +4,15 @@
     <h1 class="h3 mb-3 fw-normal">Infos pour la livraison</h1>
 
     <div class="form-floating mb-4">
-        <input [(ngModel)]="adresse" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="floatingPassword" >
-        <label for="floatingPassword">Lieu de livraison</label>
+        <input [(ngModel)]="adresse" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="floatingInput" >
+        <label for="floatingInput">Lieu de livraison</label>
+    </div><div class="form-floating mb-4">
+        <input [(ngModel)]="contact" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="floatingInput" >
+        <label for="floatingInput">Contact</label>
     </div>
     <div class="form-floating mb-4">
-        <input [(ngModel)]="daty" [ngModelOptions]="{standalone: true}" type="date" class="form-control" id="floatingPassword" >
-        <label for="floatingPassword">Date de livraison</label>
+        <input [(ngModel)]="daty" [ngModelOptions]="{standalone: true}" type="date" class="form-control" id="floatingInput" >
+        <label for="floatingInput">Date de livraison</label>
     </div>
     <div class="checkbox mb-3">
         <label>
