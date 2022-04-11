@@ -30,7 +30,7 @@ module.exports = class AuthModel{
     static generateCodeInscription(email, name){
         return new Promise((resolve, reject)=> {
             let code = EmailModel.generateCode(email, name);
-            let promise = EmailModel.sendCode(email, "Merci d'utiliser ce vode pour valider votre inscription", code);
+            let promise = EmailModel.sendCode(email, "Merci d'utiliser ce code pour valider votre inscription", code);
             promise.then(value =>{
                 resolve(value);
             }).catch(error =>{

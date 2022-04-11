@@ -58,10 +58,10 @@ module.exports = class CmdModel {
     }
 
     //update etat
-    static updateEtat(db, id, idResto, action) {
+    static updateEtat(db, id, idResto, etat) {
         return new Promise((resolve, reject) => {
             db.collection("commande").findOneAndUpdate(
-                { _id: new ObjectId(id), idResto: idResto },
+                { _id: new ObjectId(id), idresto: idResto },
                 {
                     $set: {
                         etat: etat
