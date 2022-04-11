@@ -11,7 +11,6 @@ import { CommandeComponent } from './pages/resto/commande/commande.component';
 import { FichePlatComponent } from './fo/fiche-plat/fiche-plat.component';
 import { CrudComponent } from './pages/resto/crud/crud/crud.component';
 import { FicheComponent } from './pages/resto/crud/fiche/fiche.component';
-import { DeconnectionComponent } from './deconnection/deconnection.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { BenefComponent } from './pages/resto/benef/benef.component';
@@ -19,10 +18,10 @@ import { LivreurGuard } from './guard/livreur.guard';
 import { AlivrerComponent } from './pages/alivrer/alivrer.component';
 import { LivraisonclComponent } from './fo/livraisoncl/livraisoncl.component';
 import { MescommandesComponent } from './fo/mescommandes/mescommandes.component';
+import { ListeUserComponent } from './pages/admin/liste-user/liste-user.component';
 
 const routes: Routes = [
   { path: '', component: ListePlatsComponent},
-  { path: 'deco', component: DeconnectionComponent},
   { path: 'client', children:[
     { path: 'acc', component: ListePlatsComponent},
     { path: 'ficheplat', component: FichePlatComponent},
@@ -33,11 +32,12 @@ const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
   { path: 'authfo', component: AuthComponent } ,
   { path: 'liv', children: [
-    { path: 'alivrer', component: AlivrerComponent}
+    { path: 'alivrer', component: AlivrerComponent},
   ]},
   { path: 'admin', children: [
     { path: 'dashboard', component: TdbComponent},
-    { path: 'commande', component: CommandeComponent}
+    { path: 'commande', component: CommandeComponent},
+    { path: 'user', component: ListeUserComponent}
   ], canActivate:[AdminGuard]},
   { path: 'resto', children: [
     { path: 'crud', component: CrudComponent},

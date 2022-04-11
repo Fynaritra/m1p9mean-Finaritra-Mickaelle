@@ -24,7 +24,6 @@ import { BenefComponent } from './pages/resto/benef/benef.component';
 import { CrudComponent } from './pages/resto/crud/crud/crud.component';
 import { LoadingComponent } from './include/loading/loading.component';
 import { HttpLoadInterceptor } from './interceptor/http-load.interceptor';
-import { DeconnectionComponent } from './deconnection/deconnection.component';
 import { ListePlatsComponent } from './fo/liste-plats/liste-plats.component';
 import { FichePlatComponent } from './fo/fiche-plat/fiche-plat.component';
 import { HeaderfoComponent } from './include/headerfo/headerfo.component';
@@ -34,6 +33,7 @@ import { AlivrerComponent } from './pages/alivrer/alivrer.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { LivraisonclComponent } from './fo/livraisoncl/livraisoncl.component';
 import { MescommandesComponent } from './fo/mescommandes/mescommandes.component';
+import { ListeUserComponent } from './pages/admin/liste-user/liste-user.component';
 
 @NgModule({
   declarations: [
@@ -52,13 +52,13 @@ import { MescommandesComponent } from './fo/mescommandes/mescommandes.component'
     BenefComponent,
     CrudComponent,
     LoadingComponent,
-    DeconnectionComponent,
     ListePlatsComponent,
     FichePlatComponent,
     HeaderfoComponent,
     AlivrerComponent,
     LivraisonclComponent,
-    MescommandesComponent
+    MescommandesComponent,
+    ListeUserComponent
   ],
   imports: [
     BrowserModule,
