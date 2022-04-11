@@ -57,7 +57,7 @@ router.post('/insert', (req, res)=>{
     let connection = new Connection();
 	let dbpromise = connection.getDB("ekaly");
     dbpromise.then(function(db){
-        const promise = LivraisonModel.insert(db, req.bodyidlivreur, req.body.idresto, req.body.adresse, req.body.date, req.body.idcommande);
+        const promise = LivraisonModel.insert(db, req.bodyidlivreur, req.body.idresto, req.body.adresse, req.body.date, req.body.idcommande, req.body.contact);
         promise.then(function(value){
             res.json(value);
         }).catch( error => {

@@ -29,7 +29,7 @@ module.exports = class LivraisonModel{
     }
 
     //saisie
-    static insert(db, idlivreur, idresto, adresse, date, idcommande){
+    static insert(db, idlivreur, idresto, adresse, date, idcommande, contact){
         return new Promise((resolve, reject)=>{
             db.collection("livraison").insertOne(
                 {
@@ -37,7 +37,8 @@ module.exports = class LivraisonModel{
                     adresse: adresse,
                     daty: new Date(date),
                     idcommande: new ObjectId(idcommande),
-                    etat : Number.parseInt(constante.etatcree)
+                    contact: contact,
+                    etat : Number.parseInt(constante.etatvalider)
                 }
             ).then(function(data) {
                 if(data.insertedCount==1){

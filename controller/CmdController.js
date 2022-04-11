@@ -50,7 +50,7 @@ router.put('/etat', (req,res)=>{
     let connection = new Connection();
 	let dbpromise = connection.getDB("ekaly");
     dbpromise.then(function(db){
-        const promise = CmdModel.updateEtat(db, req.body.idplat, req.body.idresto, req.body.etat)
+        const promise = CmdModel.updateEtat(db, req.body.idcommande, req.body.etat)
         promise.then(function(value){
             res.json(value);
         }).catch( error => {

@@ -58,10 +58,11 @@ module.exports = class CmdModel {
     }
 
     //update etat
-    static updateEtat(db, id, idResto, etat) {
+    static updateEtat(db, id, etat) {
+        console.log(etat);
         return new Promise((resolve, reject) => {
             db.collection("commande").findOneAndUpdate(
-                { _id: new ObjectId(id), idresto: idResto },
+                { _id: new ObjectId(id) },
                 {
                     $set: {
                         etat: etat
@@ -140,8 +141,8 @@ module.exports = class CmdModel {
         return new Promise((resolve, reject) => {
             db.collection("commande").insertOne(
                 {
-                    idclient: idclient,
-                    idresto: idresto,
+                    idclient: new ObjectId(idclient),
+                    idresto: new ObjectId(idresto),
                     daty: new Date(daty),
                     details: details,
                     etat: Number.parseInt(constante.etatcree)
