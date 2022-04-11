@@ -60,16 +60,17 @@ module.exports = class CmdModel {
     //update etat
     static updateEtat(db, id, etat) {
         console.log(etat);
+        console.log(id);
         return new Promise((resolve, reject) => {
             db.collection("commande").findOneAndUpdate(
                 { _id: new ObjectId(id) },
                 {
                     $set: {
-                        etat: etat
+                        etat: parseInt(etat)
                     }
                 },
                 {
-                    upsert: true
+                    upsert: false
                 }
             ).then(function (data) {
                 if (data.ok == 1) {
