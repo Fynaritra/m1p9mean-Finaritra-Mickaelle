@@ -19,12 +19,13 @@ module.exports = class CmdModel {
                 },
                 {
                     $match: {
-                    idresto: new ObjectId(idresto),
-                    daty:{
-                        $gte: new Date(daty1),
-                        $lte: new Date(daty2)
+                        idresto: new ObjectId(idresto),
+                        daty: {
+                            $gte: new Date(daty1),
+                            $lte: new Date(daty2)
+                        }
                     }
-                }}
+                }
                 , {
                     $group:
                     {
@@ -59,14 +60,12 @@ module.exports = class CmdModel {
 
     //update etat
     static updateEtat(db, id, etat) {
-        console.log(etat);
-        console.log(id);
         return new Promise((resolve, reject) => {
             db.collection("commande").findOneAndUpdate(
                 { _id: new ObjectId(id) },
                 {
                     $set: {
-                        etat: parseInt(etat)
+                        etat: etat
                     }
                 },
                 {
@@ -149,7 +148,6 @@ module.exports = class CmdModel {
                     etat: Number.parseInt(constante.etatcree)
                 }
             ).then(function (data) {
-                console.log(data);
                 if (data.insertedCount == 1) {
                     resolve({
                         "status": 200,
@@ -209,41 +207,44 @@ module.exports = class CmdModel {
 
     //par personne
     static cmdParPers(db, idclient, etat) {
-        if (isNaN(limit)) limit = Number.parseInt(constante.limitskip);
+        /*if (isNaN(limit)) limit = Number.parseInt(constante.limitskip);
         if (isNaN(numpage)) numpage = Number.parseInt(constante.numskip);
-        let skips = limit * (numpage - 1);
+        let skips = limit * (numpage - 1);*/
         return new Promise((resolve, reject) => {
             db.collection("commande").aggregate(
-                [{
-                    $match: {
-                        idclient: new ObjectId(idclient),
-                        etat: {
-                            $gte: Number.parseInt(etat)
+                [
+                    {
+                        $match: {
+                            idclient: new ObjectId(idclient),
+                            etat: {
+                                $gte: Number.parseInt(etat)
+                            }
                         }
+                    },
+                    {
+                        $lookup: {
+                            from: "resto",
+                            localField: "idresto",
+                            foreignField: "_id",
+                            as: "resto_det"
+                        }
+
                     }
-                },
-                {
-                    $lookup: {
-                        from: "utilisateur",
-                        localField: "idclient",
-                        foreignField: "_id",
-                        as: "client"
-                    }
-                }
+
                 ]
             )
-                .skip(skips).limit(limit).toArray(function (err, result) {
-                    if (err) {
-                        console.error(err);
-                        reject(err);
-                        return;
-                    } else {
-                        resolve({
-                            "status": 200,
-                            "data": result
-                        });
-                    }
-                });
+            /* .skip(skips).limit(limit)*/.toArray(function (err, result) {
+                if (err) {
+                    console.error(err);
+                    reject(err);
+                    return;
+                } else {
+                    resolve({
+                        "status": 200,
+                        "data": result
+                    });
+                }
+            });
         });
     }
 
