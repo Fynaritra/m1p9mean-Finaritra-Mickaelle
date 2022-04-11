@@ -72,6 +72,9 @@ export class FonctionService {
   //END INSCRIPTION
 
   //COMMANDE
+  getCmd(){
+    return this.http.get(`${apiEndpoint}/api/cmd/all`);
+  }
   updateCmd(idcommande: string, etat: number, token:string){
     let body = {
       "idcommande": idcommande,

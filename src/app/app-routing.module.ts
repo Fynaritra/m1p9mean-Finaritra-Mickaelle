@@ -36,13 +36,15 @@ const routes: Routes = [
   ]},
   { path: 'admin', children: [
     { path: 'dashboard', component: TdbComponent},
-    { path: 'commande', component: CommandeComponent},
-    { path: 'user', component: ListeUserComponent}
+    { path: 'user', component: ListeUserComponent},
+    { path: 'commande', component: CommandeComponent}
   ], canActivate:[AdminGuard]},
   { path: 'resto', children: [
     { path: 'crud', component: CrudComponent},
     { path: 'fiche', component: FicheComponent},
     { path: 'benef', component: BenefComponent},
+    { path: 'cmd', component: CommandeComponent},
+    { path: 'cmdencours', component: CommandeComponent}
   ], canActivate:[RestoGuard]}
   ] 
 ;

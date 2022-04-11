@@ -1,1 +1,31 @@
-<app-headerbo></app-headerbo>
+
+<div class="row">
+    <div class="col-md-2">
+      <app-headerbo></app-headerbo>
+    </div>
+    <div class="col-md-8">
+      <h2>Liste des commandes</h2>
+  
+      <div class="table-responsive">
+        <div class="table-wrapper">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Nom</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let commande of commandes">
+                
+              </tr>
+            </tbody>
+          </table>
+          <div class="">
+            <i (click)="precedent()" class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
+            <i (click)="suivant()" class="fa fa-chevron-right fa-2x next d-flex justify-content-end" aria-hidden="true"></i>
+          </div>
+    
+        </div>
+      </div>
+    </div>
+  </div>
