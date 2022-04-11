@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FonctionService } from 'src/app/service/fonction.service';
-import { etatliv } from 'src/environments/environment';
+import { etatcloture } from 'src/environments/environment';
 
 @Component({
   selector: 'app-livraisoncl',
@@ -29,7 +29,7 @@ export class LivraisonclComponent implements OnInit {
   }
 
   livrer() {
-    let update = this.fonction.updateCmd(this.idcommande, etatliv, this.token);
+    let update = this.fonction.updateCmd(this.idcommande, etatcloture, this.token);
     update.subscribe((response: any) => {
       if (response.status == 200) {
         let result = this.fonction.insertLiv("", this.idresto, this.adresse, this.daty, this.idcommande, this.token, this.contact)

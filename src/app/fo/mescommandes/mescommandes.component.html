@@ -1,1 +1,19 @@
 <app-headerfo></app-headerfo>
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Restaurant</th>
+      <th>Plats</th>
+      <th>Etat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let commande of cmd">
+        <td>{{commande.resto_det[0].name}}</td>
+        <td>
+          <p *ngFor="let plat of commande.details">{{plat.nom}} - {{plat.quantite}} - {{plat.prix}} </p>
+        </td>
+        <td>{{commande.etat}}</td>
+    </tr>
+  </tbody>
+</table>

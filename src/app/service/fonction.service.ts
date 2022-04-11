@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { apiEndpoint, profilclient } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
-import { etatliv } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -86,8 +85,8 @@ export class FonctionService {
       })
     })
   }
-  mesCommandes(idclient:string, token:string){
-    return this.http.get(`${apiEndpoint}/api/cmd/pers?token=${token}&idclient=${idclient}&etat=${etatliv}`);
+  mesCommandes(idclient:string, token:string, etat:number){
+    return this.http.get(`${apiEndpoint}/api/cmd/pers?token=${token}&idclient=${idclient}&etat=${etat}`);
   }
   insertCmd(idclient:string, idresto:string, plats:Object, token:string){
     let body = {
