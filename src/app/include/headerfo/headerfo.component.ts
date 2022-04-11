@@ -28,6 +28,7 @@ export class HeaderfoComponent implements OnInit {
   }
   deconnection(){
     this.authService.logout();
+    location.reload();
     this.route.navigate(['client/acc/']);
   } 
   connection(){

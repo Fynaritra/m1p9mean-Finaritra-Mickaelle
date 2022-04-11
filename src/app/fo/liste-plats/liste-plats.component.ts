@@ -15,8 +15,8 @@ export class ListePlatsComponent implements OnInit {
   nom = "";
   minprice = NaN;
   maxprice = NaN;
-  limit = NaN;
-  numpage = NaN;
+  limit = 9;
+  numpage = 1;
 
   constructor(private fonction: FonctionService, private router:Router) {
     this.token = localStorage.getItem("token");
@@ -37,5 +37,14 @@ export class ListePlatsComponent implements OnInit {
         this.listePlats = response.data;
       }
     })
+  }
+  precedent(){
+    this.numpage --;
+    this.getPlats();
+  }
+
+  suivant(){
+    this.numpage ++;
+    this.getPlats();
   }
 }
